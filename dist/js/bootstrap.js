@@ -280,10 +280,8 @@
     });
   };
 
-  const execute = callback => {
-    if (typeof callback === 'function') {
-      callback();
-    }
+  const execute = (possibleCallback, args = [], defaultValue = possibleCallback) => {
+    return typeof possibleCallback === 'function' ? possibleCallback(...args) : defaultValue;
   };
 
   const executeAfterTransition = (callback, transitionElement, waitForTransition = true) => {
@@ -2289,7 +2287,7 @@
       }
 
       return { ...defaultBsPopperConfig,
-        ...(typeof this._config.popperConfig === 'function' ? this._config.popperConfig(defaultBsPopperConfig) : this._config.popperConfig)
+        ...execute(this._config.popperConfig, [defaultBsPopperConfig])
       };
     }
 
@@ -3692,7 +3690,7 @@
     }
 
     _resolvePossibleFunction(arg) {
-      return typeof arg === 'function' ? arg(this) : arg;
+      return execute(arg, [this]);
     }
 
     _putElementInTemplate(element, templateElement) {
@@ -3859,10 +3857,6 @@
       clearTimeout(this._timeout);
       EventHandler.off(this._element.closest(SELECTOR_MODAL), EVENT_MODAL_HIDE, this._hideModalHandler);
 
-      if (this.tip) {
-        this.tip.remove();
-      }
-
       if (this._element.getAttribute('data-bs-original-title')) {
         this._element.setAttribute('title', this._element.getAttribute('data-bs-original-title'));
       }
@@ -3891,10 +3885,7 @@
       } // todo v6 remove this OR make it optional
 
 
-      if (this.tip) {
-        this.tip.remove();
-        this.tip = null;
-      }
+      this._disposePopper();
 
       const tip = this._getTipElement();
 
@@ -3909,12 +3900,7 @@
         EventHandler.trigger(this._element, this.constructor.eventName(EVENT_INSERTED));
       }
 
-      if (this._popper) {
-        this._popper.update();
-      } else {
-        this._popper = this._createPopper(tip);
-      }
-
+      this._popper = this._createPopper(tip);
       tip.classList.add(CLASS_NAME_SHOW$2); // If this is a touch-enabled device we add extra
       // empty mouseover listeners to the body's immediate children;
       // only needed because of broken event delegation on iOS
@@ -3972,14 +3958,12 @@
         }
 
         if (!this._isHovered) {
-          tip.remove();
+          this._disposePopper();
         }
 
         this._element.removeAttribute('aria-describedby');
 
         EventHandler.trigger(this._element, this.constructor.eventName(EVENT_HIDDEN$2));
-
-        this._disposePopper();
       };
 
       this._queueCallback(complete, this.tip, this._isAnimated());
@@ -4074,7 +4058,7 @@
     }
 
     _createPopper(tip) {
-      const placement = typeof this._config.placement === 'function' ? this._config.placement.call(this, tip, this._element) : this._config.placement;
+      const placement = execute(this._config.placement, [this, tip, this._element]);
       const attachment = AttachmentMap[placement.toUpperCase()];
       return Popper__namespace.createPopper(this._element, tip, this._getPopperConfig(attachment));
     }
@@ -4096,7 +4080,7 @@
     }
 
     _resolvePossibleFunction(arg) {
-      return typeof arg === 'function' ? arg.call(this._element) : arg;
+      return execute(arg, [this._element]);
     }
 
     _getPopperConfig(attachment) {
@@ -4134,7 +4118,7 @@
         }]
       };
       return { ...defaultBsPopperConfig,
-        ...(typeof this._config.popperConfig === 'function' ? this._config.popperConfig(defaultBsPopperConfig) : this._config.popperConfig)
+        ...execute(this._config.popperConfig, [defaultBsPopperConfig])
       };
     }
 
@@ -4295,6 +4279,11 @@
         this._popper.destroy();
 
         this._popper = null;
+      }
+
+      if (this.tip) {
+        this.tip.remove();
+        this.tip = null;
       }
     } // Static
 

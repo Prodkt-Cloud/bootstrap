@@ -336,7 +336,7 @@
       }
 
       return { ...defaultBsPopperConfig,
-        ...(typeof this._config.popperConfig === 'function' ? this._config.popperConfig(defaultBsPopperConfig) : this._config.popperConfig)
+        ...index.execute(this._config.popperConfig, [defaultBsPopperConfig])
       };
     }
 
