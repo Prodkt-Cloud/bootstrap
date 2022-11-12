@@ -1,0 +1,56 @@
+{{- /*
+  Usage: `example args`
+
+  `args` are all optional and can be one of the following:
+    * id: the `div`'s id - default: ""
+    * class: any extra class(es) to be added to the `div` - default: ""
+    * lang: language used to display the code - default: "html"
+    * show_markup: if the markup should be output in the HTML - default: `true`
+    * show_preview: if the preview should be output in the HTML - default: `true`
+    * stackblitz_add_js: if extra JS snippet should be added to StackBlitz - default: `false`
+*/ -}}
+
+{{- $id := .Get "id" -}}
+{{- $class := .Get "class" -}}
+{{- $lang := .Get "lang" | default "html" -}}
+{{- $stackblitz_add_js := .Get "stackblitz_add_js" | default false -}}
+{{- $show_markup := .Get "show_markup" | default true -}}
+{{- $show_preview := .Get "show_preview" | default true -}}
+{{- $input := .Inner -}}
+{{- $content := .Inner -}}
+
+<div class="bd-example-snippet bd-code-snippet App-mainContent w-100">
+  {{- if eq $show_preview true -}}
+  <div{{ with $id }} id="{{ . }}"{{ end }} class="App-content bd-example{{ with $class }} {{ . }}{{ end }}">
+
+
+
+    <div class="App-sidebar" tabindex="-1" style="width: 558px;"><div class="App-sidebarGutter" data-requires-js=""></div><header class="App-sidebarHeader"><span class="App-sidebarHeaderTitle">Pinned demo</span> <span class="App-sidebarHide" data-requires-js=""><button class="IconButton"><svg class="Icon"><use xlink:href="#close"></use></svg></button></span></header><aside class="Sidebar"><div data-demo-root="" data-observe-resizes="" data-observing="true" class="SM"><div class="Card"><div class="Card-figure"><figure class="Image"></figure></div><div class="Card-body"><h3 class="Card-title">Card title</h3><p>A basic card component with an image, title, description, and call to action. By default, the image is on top and full-width, but inside larger containers the image is positioned on the left with the rest of the content beside it.</p><div class="IconActions"><svg class="Icon Icon--inline"><use xlink:href="#thumb_up"></use></svg> <svg class="Icon Icon--inline"><use xlink:href="#insert_emoticon"></use></svg> <svg class="Icon Icon--inline"><use xlink:href="#favorite"></use></svg> <svg class="Icon Icon--inline"><use xlink:href="#insert_comment"></use></svg> <svg class="Icon Icon--inline"><use xlink:href="#insert_link"></use></svg> <svg class="Icon Icon--inline"><use xlink:href="#share"></use></svg></div></div></div></div></aside></div>
+
+  </div>
+  <div class="w-100">{{- $input -}}</div>
+  {{- end -}}
+
+  {{- if eq $show_markup true -}}
+    {{- if eq $show_preview true -}}
+      <div class="d-flex align-items-center highlight-toolbar bg-light ps-3 pe-2 py-1">
+        <small class="font-monospace text-muted text-uppercase">{{- $lang -}}</small>
+        <div class="d-flex ms-auto">
+          <button type="button" class="btn-edit text-nowrap"{{ with $stackblitz_add_js }} data-sb-js-snippet="{{ $stackblitz_add_js }}"{{ end }} title="Try it on StackBlitz">
+            <svg class="bi" role="img" aria-label="Try it"><use xlink:href="#lightning-charge-fill"/></svg>
+          </button>
+          <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
+            <svg class="bi" role="img" aria-label="Copy"><use xlink:href="#clipboard"/></svg>
+          </button>
+        </div>
+      </div>
+    {{- end -}}
+
+
+    {{- $content = replaceRE `<svg class="bd-placeholder-img(?:-lg)?(?: *?bd-placeholder-img-lg)? ?(.*?)".*?<\/svg>` `<img src="..." class="$1" alt="...">` $content -}}
+    {{- $content = replaceRE `<img class="bd-placeholder-img(?:-lg)?(?: *?bd-placeholder-img-lg)? ?(.*?)".*?>` `<img src="..." class="$1" alt="...">` $content -}}
+    {{- $content = replaceRE ` (class=" *?")` "" $content -}}
+    {{- highlight (trim $content "\n") $lang "" -}}
+  {{- end -}}
+
+</div>

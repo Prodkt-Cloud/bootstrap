@@ -1,0 +1,183 @@
+{{- /*
+  Usage: `example args`
+
+  `args` are all optional and can be one of the following:
+    * id: the `div`'s id - default: ""
+    * class: any extra class(es) to be added to the `div` - default: ""
+    * lang: language used to display the code - default: "html"
+    * show_markup: if the markup should be output in the HTML - default: `true`
+    * show_preview: if the preview should be output in the HTML - default: `true`
+    * stackblitz_add_js: if extra JS snippet should be added to StackBlitz - default: `false`
+*/ -}}
+
+{{- $id := .Get "id" -}}
+{{- $class := .Get "class" -}}
+{{- $lang := .Get "lang" | default "html" -}}
+{{- $stackblitz_add_js := .Get "stackblitz_add_js" | default false -}}
+{{- $show_markup := .Get "show_markup" | default true -}}
+{{- $show_preview := .Get "show_preview" | default true -}}
+{{- $input := .Inner -}}
+{{- $content := .Inner -}}
+
+<div class="bd-example-snippet bd-code-snippet">
+  {{- if eq $show_preview true -}}
+  <div{{ with $id }} id="{{ . }}"{{ end }} class="bd-example{{ with $class }} {{ . }}{{ end }}">
+    {{- $input -}}
+  </div>
+
+  <section class="Section" data-section="overview">
+    <h2 class="Heading">
+      <span id="overview" data-section-anchor></span>
+      Overview
+    </h2>
+
+    <p>This demo site is a working, cross-browser implementation of the strategy outlined in the article <a href="">Responsive Components: a Solution to the Container Queries Problem</a>.
+
+    <p>The strategy is simple to implement, highly-performant, and embraces progressive enhancement, so <strong>you can actually use it today!</strong></p>
+
+    <div data-observe-resizes>
+      <div class="InfoBox">
+        <div class="InfoBox-figure">
+          <svg class="Icon">
+            <use xlink:href="#star"></use>
+          </svg>
+        </div>
+        <div class="InfoBox-content">
+          <noscript>
+            <aside class="Note">
+              <strong>It looks like you have JavaScript disabled.</strong> That's OK! All the content on the site is still viewable, but keep in mind most of the interactive features won't work.
+            </aside>
+          </noscript>
+
+          <h3 class="InfoBox-title">How to use the site</h3>
+          <ul>
+            <li>Browse through the demos listed in the left-hand navigation menu. For each of the demos, resize them to see how they respond.
+            <strong class="visible@MD">Note: the demos are best viewed on a large screen so you can resize them.</strong></li>
+            <li>You can resize demo by dragging the divider between this content area and the "Pinned demo" sidebar. You can also collapse both the right and left sidebars or resize the browser window.
+            <li>Lastly, you can click the "pin demo in sidebar" button from any demo page to compare different demos side by side.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <h3>How it works</h3>
+
+    <p>The key ingredient that makes this strategy work is the new <a href="https://developers.google.com/web/updates/2016/10/resizeobserver">ResizeObserver API</a>. With just <a href="{{ articleUrl }}#observing-container-resizes">one small snippet of code</a>, you can performantly observe size changes to as many components on your page as you want.</p>
+
+    <p>This demo site automatically observes all elements with the attribute <code>data-observe-resizes</code>. To make a component responsive to its container, just wrap it in an element with this attribute, and let your <a href="{{ repoUrl }}/tree/master/app/styles/demos">CSS do the rest!</a></p>
+
+    <p>Here's a live demo of the container markup. Resize the content area to see it change:</p>
+
+  <!-- <pre> indentation is significant, so keep to the left -->
+  <div data-observe-resizes>
+  <pre class="LiveCodeDemo"><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span><span class="LiveCodeDemo-spacer"> </span><span class="LiveCodeDemo-classAttr"><span class="hljs-attr">class</span>=<span class="hljs-string">"<span class="LiveCodeDemo-classAttrValue"></span>"</span></span> <span class="hljs-attr">data-observe-resizes</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- Component goes here... --&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+  </div>
+
+    <p>The default breakpoint classes used on this site correspond to the following size definitions <em>(note that not all components defines styles for every breakpoint)</em>:</p>
+
+    <table>
+      <tr>
+        <th>Breakpoint class name</th>
+        <th>Container size</th>
+      </tr>
+      <tr>
+        <td>SM</td>
+        <td><code>min-width: 24em</code></td>
+      </tr>
+      <tr>
+        <td>MD</td>
+        <td><code>min-width: 36em</code></td>
+      </tr>
+      <tr>
+        <td>LG</td>
+        <td><code>min-width: 48em</code></td>
+      </tr>
+      <tr>
+        <td>XL</td>
+        <td><code>min-width: 60em</code></td>
+      </tr>
+    </table>
+
+    <aside class="Note">
+      <strong>Note:</strong> if you want to use custom breakpoints on a per-container basis, you can! See the <a href="#custom-breakpoints">custom breakpoints</a> demo for an example.
+    </aside>
+
+    <p>Once you get a feel for the demos, check out <a href="">the article</a> for an in-depth explanation of the strategy and implementation.</p>
+
+    <h3>Next steps</h3>
+
+    <ul>
+      <li>
+        <p><strong>Love the idea?</strong><br>
+          Awesome! Go build something with it, and help <a href="">spread the word</a>.</p>
+      </li>
+      <li>
+        <p><strong>Want to go deeper?</strong><br>
+          Read about the <a href="">implementation</a> and check out the <a href="">source code</a>.</p>
+      <li>
+        <p><strong>Have an idea to improve the strategy?</strong><br>
+          <a href="/issues/new">Open an issue</a> on Github!</p>
+      <li>
+        <p><strong>Disagree with everything I've ever said?</strong><br>
+          Cool, write a blog post and tell the world why your idea is better!</p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="Section" data-section="card">
+    <h2 class="Heading">
+      <span id="card" data-section-anchor></span>
+      Card
+    </h2>
+    <div data-demo-root data-observe-resizes>
+      {% include 'components/Card.html' %}
+    </div>
+    {% set component = 'Card' %}
+    {% include '_pin-action.html' %}
+
+    <h3>The code</h3>
+
+    {% highlight 'html' %}
+    <!-- Container element -->
+    <div data-observe-resizes>
+      <!-- Component element -->
+      <div class="Card">...</div>
+    </div>
+    {% endhighlight %}
+
+    <ul>
+      <li><a href="">
+      Full card CSS source</a></li>
+      <li><a href="">
+      Full card HTML source</a></li>
+    </ul>
+  </section>
+
+</div>
+{{- end -}}
+
+  {{- if eq $show_markup true -}}
+    {{- if eq $show_preview true -}}
+      <div class="d-flex align-items-center highlight-toolbar bg-light ps-3 pe-2 py-1">
+        <small class="font-monospace text-muted text-uppercase">{{- $lang -}}</small>
+        <div class="d-flex ms-auto">
+          <button type="button" class="btn-edit text-nowrap"{{ with $stackblitz_add_js }} data-sb-js-snippet="{{ $stackblitz_add_js }}"{{ end }} title="Try it on StackBlitz">
+            <svg class="bi" role="img" aria-label="Try it"><use xlink:href="#lightning-charge-fill"/></svg>
+          </button>
+          <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
+            <svg class="bi" role="img" aria-label="Copy"><use xlink:href="#clipboard"/></svg>
+          </button>
+        </div>
+      </div>
+    {{- end -}}
+
+
+    {{- $content = replaceRE `<svg class="bd-placeholder-img(?:-lg)?(?: *?bd-placeholder-img-lg)? ?(.*?)".*?<\/svg>` `<img src="..." class="$1" alt="...">` $content -}}
+    {{- $content = replaceRE `<img class="bd-placeholder-img(?:-lg)?(?: *?bd-placeholder-img-lg)? ?(.*?)".*?>` `<img src="..." class="$1" alt="...">` $content -}}
+    {{- $content = replaceRE ` (class=" *?")` "" $content -}}
+    {{- highlight (trim $content "\n") $lang "" -}}
+  {{- end -}}
+
+</div>

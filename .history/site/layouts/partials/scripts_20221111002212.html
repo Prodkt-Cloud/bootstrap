@@ -1,0 +1,85 @@
+
+{{ if eq hugo.Environment "production" -}}
+  <script src="/docs/{{ .Site.Params.docs_version }}/dist/js/bootstrap.bundle.min.js" {{ printf "integrity=%q" .Site.Params.cdn.js_bundle_hash | safeHTMLAttr }} crossorigin="anonymous"></script>
+{{ else -}}
+  <script src="/docs/{{ .Site.Params.docs_version }}/dist/js/bootstrap.bundle.js"></script>
+{{- end }}
+
+{{ if eq .Page.Layout "docs" -}}
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+<script src="https://cdn.jsdelivr.net/npm/@stackblitz/sdk@1/bundles/sdk.umd.js"></script>
+{{- end }}
+
+{{- $vendor := resources.Match "js/vendor/*.js" -}}
+{{- $js := resources.Match "js/*.js" -}}
+{{- $css := resources.Match "js/*.css" -}}
+{{- $targetDocsJSPath := path.Join "/docs" .Site.Params.docs_version "assets/js/docs.js" -}}
+{{- $docsJs := append $js $vendor | resources.Concat $targetDocsJSPath -}}
+
+{{- if eq hugo.Environment "production" -}}
+  {{- $docsJs = $docsJs | resources.Minify -}}
+{{- end }}
+
+<script src="{{ $docsJs.Permalink | relURL }}"></script>
+
+{{ if eq .Page.Layout "docs" -}}
+<script>
+  // Open in StackBlitz logic
+  document.querySelectorAll('.btn-edit').forEach(btn => {
+    btn.addEventListener('click', event => {
+      const htmlSnippet = event.target.closest('.bd-code-snippet').querySelector('.bd-example').innerHTML
+
+      // Get extra classes for this example
+      const classes = Array.from(event.target.closest('.bd-code-snippet').querySelector('.bd-example').classList).join(' ')
+
+      const jsSnippet = event.target.closest('.bd-code-snippet').querySelector('.btn-edit').getAttribute('data-sb-js-snippet')
+      StackBlitzSDK.openBootstrapSnippet(htmlSnippet, jsSnippet, classes)
+    })
+  })
+
+  StackBlitzSDK.openBootstrapSnippet = (htmlSnippet, jsSnippet, classes) => {
+    const markup = `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ .Site.Params.cdn.css }}" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/{{ .Site.Params.docs_version }}/assets/css/docs.css" rel="stylesheet">
+    <title>Bootstrap Example</title>
+    <${'script'} src="{{ .Site.Params.cdn.js_bundle }}"></${'script'}>
+
+  </head>
+  <body class="p-3 m-0 border-0 ${classes}">
+
+    <!-- Example Code -->
+${htmlSnippet.replace(/^/gm, '    ')}
+    <!-- End Example Code -->
+  </body>
+</html>`
+
+    const jsSnippetContent = jsSnippet ? '{{ os.ReadFile "site/assets/js/snippets.js" }}' : null
+    const project = {
+      files: {
+        'index.html': markup,
+        'index.js': jsSnippetContent
+      },
+      title: 'Bootstrap Example',
+      description: `Official example from ${window.location.href}`,
+      template: jsSnippet ? 'javascript' : 'html',
+      tags: ['bootstrap']
+    }
+
+    StackBlitzSDK.openProject(project, { openFile: 'index.html' })
+  }
+</script>
+
+<script defer src="https://cdn.usefathom.com/script.js" data-site="ITUSEYJG"></script>
+<script src="https://kit.fontawesome.com/8c1112f2d0.js" crossorigin="anonymous"></script>
+<!-- <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.3.913/styles/kendo.bootstrap-main.min.css" /> -->
+<!-- <link href="https://kendo.cdn.telerik.com/2022.3.913/styles/kendo.common.min.css" rel="stylesheet" />
+<link href="https://kendo.cdn.telerik.com/2022.3.913/styles/kendo.default-main.min.css" rel="stylesheet" /> -->
+<!-- <script src="https://kendo.cdn.telerik.com/2022.3.913/js/kendo.all.min.js"></script> -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+{{- end }}

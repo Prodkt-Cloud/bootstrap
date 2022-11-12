@@ -1,0 +1,203 @@
+:root {
+  --gutter: 1.5em;
+  --accentColor: hsl(300, 50%, 50%);
+  --accentColorMuted: hsl(300, 40%, 40%);
+  --material-easing: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (max-width: 23.97em) {
+  :root {
+    --gutter: 1.25rem;
+  }
+}
+
+@media (min-width: 72em) {
+  :root {
+    --gutter: 2rem;
+  }
+}
+
+
+/*
+ *  STYLE 1
+ */
+
+*::-webkit-scrollbar-track
+ {
+   -webkit-box-shadow: inset 0 0 16px rgba(0,0,0,1);
+   border-radius: 10px;
+   background-color: #666;
+ }
+
+*::-webkit-scrollbar
+ {
+   width: 12px;
+   background-color: rgba(0,0,0,0);
+ }
+
+*::-webkit-scrollbar-thumb
+ {
+   border-radius: 10px;
+   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+   background-color: #555;
+ }
+
+
+/**
+ * Ensures anchor links are fixed to the top of the page when JS is enabled,
+ * so new page loads referencing an anchor always display the header.
+ * (this is unset in a <noscript> tag)
+ */
+ [data-section-anchor] {
+  position: fixed;
+  top: 0;
+}
+
+[data-demo-root] {
+  margin-bottom: 1.5em;
+}
+
+[data-observe-resizes],
+responsive-container {
+  contain: content;
+  overflow: hidden;
+  position: relative;
+}
+
+[data-observe-resizes]::before,
+responsive-container::before {
+  background-color: blue;
+  color: hsla(0, 100%, 100%, 0);
+  content: "\00a0";
+  font-size: 0.8em;
+  -webkit-font-smoothing: initial;
+  font-weight: 700;
+  padding-top:1em;
+  letter-spacing: 0em;
+  position: absolute;
+  right: -4.3em;
+  text-align: center;
+  top: -2.5em;
+  transform: rotate(45deg);
+  transform-origin: 0 0;
+  width: 6em;
+  z-index: 10;
+}
+
+[data-observe-resizes][data-observing="true"]::before,
+responsive-container[observing]::before {
+  transition: background-color 0.2s var(--material-easing) 0.05s,
+    color 0.2s var(--material-easing) 0.05s;
+}
+
+[data-observe-resizes] [data-observe-resizes]::before,
+responsive-container responsive-container::before {
+  left: -1.2em;
+  right: auto;
+  top: 3.1em;
+  transform: rotate(-45deg);
+}
+
+.XS[data-observe-resizes]::before,
+responsive-container.XS::before {
+  background-color: #cea964;
+  color: hsla(0, 100%, 100%, 100);
+  content: "XS";
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 200;
+}
+
+.SM[data-observe-resizes]::before,
+responsive-container.SM::before {
+  background-color: #40bf80;
+  color: hsla(0, 100%, 100%, 100);
+  content: "SM";
+}
+
+.MD[data-observe-resizes]::before,
+responsive-container.MD::before {
+  background-color: #33b2cc;
+  content: "MD";
+}
+
+.LG[data-observe-resizes]::before,
+responsive-container.LG::before {
+  background-color: #bc79ec;
+  content: "LG";
+}
+
+.XL[data-observe-resizes]::before,
+responsive-container.XL::before {
+  background-color: #f0427c;
+  content: "XL";
+}
+
+/* Custom breakpoints */
+
+.C2[data-observe-resizes]::before,
+responsive-container.C2::before {
+  background-color: #40bf80;
+  color: hsla(0, 100%, 100%, 100);
+  content: "C2";
+}
+
+.C3[data-observe-resizes]::before,
+responsive-container.C3::before {
+  background-color: #33b2cc;
+  content: "C3";
+}
+
+.C4[data-observe-resizes]::before,
+responsive-container.C4::before {
+  background-color: #bc79ec;
+  content: "C4";
+}
+
+@media (max-width: 47.97em) {
+  .hidden\@MD {
+    display: none!important;
+  }
+}
+
+@media (min-width: 48em) {
+  .visible\@MD {
+    display: none!important;
+  }
+}
+
+@media (max-width: 59.97em) {
+  .hidden\@LG {
+    display: none!important;
+  }
+}
+
+@media (min-width: 60em) {
+  .visible\@LG {
+    display: none!important;
+  }
+}
+
+@media (max-width: 71.97em) {
+  .hidden\@XL {
+    display: none!important;
+  }
+}
+
+@media (min-width: 72em) {
+  .visible\@XL {
+    display: none!important;
+  }
+}
+/**
+ * LESSON ACTIVITY: EVENT
+ * ------------------------------------------------------------------------ \\
+ */
+.XS .tov-lessonActivity-event {
+  .tov-lessonActivity-event_coverImgage {
+    display:none;}
+}
+
+.SM .tov-lessonActivity-event {
+  .tov-lessonActivity-event_coverImgage {
+    display:flex;}
+}
