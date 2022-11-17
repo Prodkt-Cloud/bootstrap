@@ -74,8 +74,12 @@
 
 .bd-example-snippet {
 
+  &.tovAxExampleExpanded {
+    background-color: red !important;
+  }
 
   &.expand {
+
 
     margin-top:66px !important;
 
@@ -96,6 +100,7 @@
     z-index:9999;
 
     .tovAxExampleExpanded {
+      background-color: $danger !important;
       position: fixed;
       right: 50%;
       left:auto;
@@ -105,20 +110,22 @@
 
   }
 
-
+.tovAx__lesson--nextLessonCard-container {
+  height:auto;
+  top: 88px;
+   bottom: 0;
+   min-width: 280px;
+}
 
   .tovAx__lesson--nextLessonCard {
     background-image: url('/docs/5.2/assets/img/placeholder_component.svg');
     max-width: 100%;
       width: 100%;
-       height:auto;
-        min-width: 280px;
+       max-height: 300px;
          aspect-ratio: 1 / 1;
           background-position: 50% 50%;
            background-size: fill;
            background-attachment: fixed;
-            top: 88px;
-             bottom: 0;
   }
 }
 /**

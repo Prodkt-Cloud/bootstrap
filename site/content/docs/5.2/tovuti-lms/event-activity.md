@@ -9,154 +9,168 @@ toc: true
 
 - Designer: Bryan Funk
 - Product Owner: John Meindersee
+
+## Required by Design
+
+- **Clean to spec Container Query implementation**
+  - We have new Browser Tech at our fingertips and we will be using it moving forward on the learner front-end. This is a requirement and must become standard. If there are any questions I am here to support.
+
+- **Clean to spec Container Query Breakpoints**
+- **Design should be included in all reviews of this project**
+
+
+CSS containment provides a way to isolate parts of a page and declare to the browser these parts are independent from the rest of the page in terms of styles and layout.
+
+If you are creating a responsive design, you often use media queries to change the page layout based on the size of the viewport.
+It's common to group HTML elements into reusable components that have a specific layout depending on the available space in a page.
+The available space might not only depend on the size of the viewport, but also on the context where a component appears.
+
+![[A webpage with a card component demonstrating the difference between media and container queries.](container-query-diagram.png)](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Container_Queries/container-query-diagram.png)
+
+Container queries allow us to look at a container size and apply styles to the contents based on the size of their container rather than the viewport or other device characteristics.
+If the container has less space in the surrounding context, we can hide certain elements or use smaller fonts, for example.
+The illustration below shows how the same card component can be displayed with multiple layouts using container queries:
+
+![[A webpage with three card components displayed in different layouts depending on their container's size.](container-query-examples.png)](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Container_Queries/container-query-examples.png)
+
+## Using container queries
+
+To use container queries, you need to declare a **containment context** on an element so that the browser knows we might want to query the dimensions of this container later.
+To do this, you use the {{Cssxref("container-type")}} property a value of `size`, `inline-size`, or `block-size`.
+These values have the following effects:
+
+- `size`: the query will be based on the width and height of the container.
+- `inline-size`: the query will be based on the width of the container.
+- `block-size`: the query will be based on the height of the container.
+
+Take the following HTML as an example which is a card component with an image, a title, and some text:
+
+```html
+<div class="container">
+  <div class="card">
+    <img src="image.png" alt="An awesome picture of a cat" />
+    <h2>Card title</h2>
+    <p>Card content</p>
+  </div>
+</div>
+```
+
+We can create a containment context on the container `<div>` using the `container-type` property:
+
+```css
+.container {
+  container-type: inline-size;
+}
+```
+
+Once a containment context is created, we can use the {{cssxref("@container")}} at-rule to write the container query.
+The query in the following example will look for the nearest containment context and apply styles to the child elements of the container.
+Specifically, we are using a larger font size for the card title if the container is wider than `700px`.
+
+```css
+/* Default heading styles for the card title */
+.card h1 {
+  font-size: 1em;
+}
+/* Container query applied if the container is larger than 700px */
+@container (min-width: 700px) {
+  .card h1 {
+    font-size: 2em;
+  }
+}
+```
+
+If other areas of the page are also containment contexts, we can use the same component in those areas and it will respond to the relevant containment context.
+This makes reusable components a lot more flexible without needing to know specifically where they will be used each time.
+
+For more information on the syntax of container queries, see the {{cssxref("@container")}} page.
+
+### Naming containment contexts
+
+In the previous section, we used a query that matched the nearest containment context.
+It's possible to give a containment context a name using the {{Cssxref("container-name")}} property to target a specific containment context.
+The following example creates a containment context with the name `sidebar`:
+
+```css
+.container {
+  container-type: inline-size;
+  container-name: sidebar;
+}
+```
+
+We can then target this containment context using the `@container` at-rule:
+
+```css
+@container sidebar (min-width: 700px) {
+  .card {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+  }
+}
+```
+
+### Shorthand container syntax
+
+The shorthand way of declaring a containment context is to use the `container` property:
+
+```css
+.container {
+  container: sidebar / inline-size;
+}
+```
+
+For more information on this property, see the {{Cssxref("container")}} reference.
+
+### Container query length units
+
+When applying styles to a container using container queries, you can use container query length units.
+These units specify a length relative to the dimensions of a query container.
+Components that use units of length relative to their container are more flexible to use in different containers without having to recalculate concrete length values.
+
+The container query length units are:
+
+- `cqw`: 1% of a query container's width
+- `cqh`: 1% of a query container's height
+- `cqi`: 1% of a query container's inline size
+- `cqb`: 1% of a query container's block size
+- `cqmin`: The smaller value of either `cqi` or `cqb`
+- `cqmax`: The larger value of either `cqi` or `cqb`
+
+The following example uses the `cqi` unit to set the font size of a heading based on the inline size of the container:
+
+```css
+@container (min-width: 700px) {
+  .card h1 {
+    font-size: max(1.5em, 1.23em + 2cqi);
+  }
+}
+```
+
+## Fallbacks for container queries
+
+For browsers that don't yet support container queries, {{cssxref("grid")}} and {{cssxref("flex")}} can be used to create a similar effect for the card component used on this page.
+The following example uses a {{cssxref("grid-template-columns")}} declaration to create a two-column layout for the card component.
+
+```css
+.card {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+```
+
+If we want to use a single-column layout for devices with a smaller viewport, we can use a media query to change the grid template:
+
+```css
+@media (max-width: 700px) {
+  .card {
+    grid-template-columns: 1fr;
+  }
+}
+```
+
 <!-- markdownlint-disable -->
 {{< example >}}
-<div class="tovAx__componentQuery__container d-flex flex-column h-100 w-100 gap-4">
-<div class="w-100 p-0 rounded" style="background-image: url('/docs/5.2/assets/img/placeholder_component.svg');  width: 100%; height:96px;  background-position: 50% 44%; background-size: fill; background-attachment: fixed;"></div>
-<div class="d-flex flex-row w-100 gap-4">
-<div class="dragTovAxSideNavWrapper rounded mh-100" style="background-image: url('/docs/5.2/assets/img/placeholder_component.svg'); background-attachment: fixed; width: 220px;">
-<div class="dragTovAxSideNav rounded h-100 mw-100" style=""></div>
-</div>
-<div class="d-flex flex-sm-row-reverse flex-lg-row flex-wrap align-items-top gap-4">
-<div class="w-100 p-0 rounded" style="background-image: url('/docs/5.2/assets/img/placeholder_component.svg'); max-width: 240px; min-width: 100%; height:96px;  background-position: 50% 44%; background-size: fill; background-attachment: fixed;"></div>
-  <div class="col-12 col-md-8 flex-fill position-relative">
-    <div class="position-absolute top-0 translate-middle btn-group gap-2 w-auto" role="group"
-      aria-label="Horizontal radio toggle button group justify-content-end"
-      style="z-index:10; left: auto; right: -100px;">
-      <input type="radio" class="btn-check" name="vbtn-radio1" id="vbtn-radio1" autocomplete="off" checked>
-      <label class="btn d-inline-flex align-items-center bg-danger rounded-pill text-light border-0"
-        for="vbtn-radio1"><i class="fa fa-circle-xmark me-2"></i>Required</label>
-      <input type="radio" class="btn-check" name="vbtn-radio2" id="vbtn-radio2" autocomplete="off">
-      <label class="btn d-inline-flex align-items-center bg-success rounded-pill text-light border-0"
-        for="vbtn-radio2"><i class="fa fa-circle-check me-2"></i>Complete</label>
-    </div>
-    <div class="tov-lessonActivity-event border rounded shadow-sm overflow-hidden">
-      <div class="card border-0">
-        <div class="row g-0">
-          <div class="tov-lessonActivity-event_coverImgage col-3 border border-0 position-relative">
-            <img src="/docs/5.2/assets/img/placeholder.svg"
-              class="border-0 object-fit-cover img-fluid border-0" style="background-position: center center;">
-          </div>
-          <div class=" col-12 col-lg-9 flex-fill p-0">
-            <div class="card-body p-0">
-              <div class="p-4 text-start">
-                <h5 class="card-title" contenteditable="true">$eventTitle<div class="isEditable"></div>
-                </h5>
-                <p class="position-relative mb-0" contenteditable="true">$short-description<span
-                    class="isEditable"></span></p>
-              </div>
-              <div class="hstack flex-wrap gap-1 p-3 w-100 border-top">
-                <div class="d-flex flex-wrap" x-data="{ value: ['11/09/2022'],
-                              init() {
-                                  let picker = flatpickr(this.$refs.picker, {
-                                      dateFormat: 'm/d/Y',
-                                      defaultDate: this.value,
-                                      onChange: (date, dateString) => {
-                                          this.value = dateString.split(' to ')  } })
-                                  this.$watch('value', () => picker.setDate(this.value)) }, }">
-                  <p class="ps-2 py-2 my-0"><i class="fa fa-calendar me-2"></i><em
-                      class="fw-bold fst-normal me-1">$date:</em></p>
-                  <input class="border-0 ps-0 w-auto" x-ref="picker" type="text">
-                </div>
-                <div class="d-flex flex-wrap w-100 justify-content-start" x-data="{ value: ['11/09/2022', ' 11/27/2022'],
-                              init() {
-                                  let picker = flatpickr(this.$refs.picker, {
-                                       mode: 'range',
-                                      dateFormat: 'm/d/Y',
-                                      defaultDate: this.value,
-                                      onChange: (date, dateString) => {
-                                          this.value = dateString.split(' to ')  } })
-                                  this.$watch('value', () => picker.setDate(this.value)) }, }">
-                  <p class="ps-2 py-2 my-0 text-start"><i class="fa fa-calendar me-2"></i><em
-                      class="fw-bold fst-normal me-1">$dateRange:</em></p>
-                  <input class="border-0 ps-0 w-auto align-item-start" x-ref="picker" type="text">
-                </div>
-                <p
-                  class="d-flex flex-wrap w-100 justify-content-start align-items-center ps-2 py-2 my-0 gap-0 text-start">
-                  <i class="fa fa-circle-dollar me-2"></i><em class="fw-bold fst-normal me-1">Price/per
-                    registrant:</em>$price</p>
-                <p class="ps-2 py-2 my-0 text-start w-100"><i class="fa fa-clock me-2"></i><em
-                    class="fw-bold fst-normal me-1 w-100">Start time:</em>$time $anteMeridiem, $timeZone</p>
-                <p class="ps-2 py-2 my-0 text-start w-100"><i class="fa fa-alarm-clock me-2"></i><em
-                    class="fw-bold fst-normal me-1">End time:</em>$time $anteMeridiem, $timeZone</p>
-                <p class="ps-2 py-2 my-0 text-start"><i class="fa fa-map me-2"></i><em
-                    class="fw-bold fst-normal me-1">Where:</em><a href="">Get Directions to this Event</a></p>
-                <button type="button"
-                  class="d-flex flex-wrap justify-content-start align-items-center gap-2 btn btn-link ps-2 py-2 w-100 text-start fw-semibold"><img
-                    src="/docs/5.2/assets/img/tovuti/logos/teams.svg"
-                    class="object-fit-cover img-fluid text-decoration-none" style="height: 16px;">Join with Microsoft
-                  Teams</button>
-                <button type="button"
-                  class="d-flex flex-wrap justify-content-start align-items-center gap-2 btn btn-link ps-2 py-2 w-100 text-start fw-semibold"><img
-                    src="/docs/5.2/assets/img/tovuti/logos/g-meet.svg"
-                    class="object-fit-cover img-fluid text-decoration-none" style="height: 16px;">Join with Google
-                  Meet</button>
-                <p
-                  class="d-flex flex-wrap justify-content-start align-items-center gap-2 btn btn-link ps-2 py-2 w-100 text-start text-decoration-none fw-semibold">
-                  <i class="fa fa-circle-video"></i><span class="text-decoration-underline">Join Virtual
-                    Classroom</span></p>
-              </div>
-              <div
-                class="vstack bg-light flex-wrap gap-2 p-3 w-100 border-top align-items-bottom justify-content-start h-100">
-                <button type="button"
-                  class="btn btn-primary text-decoration-none d-flex flex-fill gap-2 justify-content-center align-items-center"><i
-                    class="fa fa-right-to-bracket"></i>Register for this Event</button>
-                <button type="button"
-                  class="btn btn-brand-white border text-black text-decoration-none d-flex gap-2 justify-content-center align-items-center ps-2"><i
-                    class="fa fa-arrow-right"></i>More Details</button>
-              </div>
-              <div
-                class="vstack bg-light flex-wrap gap-2 p-3 w-100 border-top align-items-bottom justify-content-between h-100">
-                <span
-                  class="bg-danger bg-opacity-10 p-2 rounded text-danger text-decoration-none d-flex flex-fill gap-2 justify-content-center align-items-center"><i
-                    class="fa fa-circle-xmark"></i>Event is at max capacity</span>
-                <span class="text-start py-2">Would you like to be added to the Waitlist? If a spot does become available you
-                  will be added as a registered attendee to this event.</span>
-                <button type="button"
-                  class=" border text-decoration-none d-flex gap-2 justify-content-center align-items-center ps-2" x-data="{ status: false, status2: false }" x-on:click="status = !status" :class="status ? 'btn bg-success border-success bg-opacity-100 text-white' : 'btn bg-warning border-warning bg-opacity-10'"><i
-                    class="fa fa-circle-check text-white" :class="status ? '' : 'd-none'"></i><span class="text-start fs-6" x-text="status ? 'You are on the waiting list!': 'Join the Waiting List'"></span></button>
-                <button type="button"
-                  class="btn btn-brand-white border text-black text-decoration-none d-flex gap-2 justify-content-center align-items-center ps-2"><i
-                    class="fa fa-arrow-right"></i>More Details</button>
-              </div>
-              <div
-                class="vstack bg-success flex-wrap gap-3 p-3 w-100 border-top align-items-bottom justify-content-between h-100">
-                <span
-                  class="text-decoration-none d-flex gap-2 text-light justify-content-center align-items-center "><i
-                    class="fa-solid fa-check"></i>You're Registered for this Event!</span>
-                <button type="button"
-                  class="btn btn-light text-black text-decoration-none d-flex gap-2 justify-content-center align-items-center"><i
-                    class="fa fa-arrow-right"></i>More Details</button>
-              </div>
-              <div class="calContainer hstack flex-wrap gap-1 px-2 py-3 w-100 border-top justify-content-evenly text-center"><span
-                  class="w-100 mb-2">Add this to your calendar</span>
-                <div class="hstack flex-wrap w-100 gap-0 gap-md-3 justify-content-center text-center"><a
-                    href="#" data-type="google"><img src="/docs/5.2/assets/img/tovuti/calendar/calendar_google.svg"
-                      class="w-auto" style="height:32px;" data-type="google"></a>
-                  <div class="vr"></div><a href="#" data-type="ics"><img
-                      src="/docs/5.2/assets/img/tovuti/calendar/calendar_iCloud.svg" class="w-auto"
-                      style="height:32px;"></a>
-                  <div class="vr"></div><a href="#" data-type="yahoo"><img
-                      src="/docs/5.2/assets/img/tovuti/calendar/calendar_yahoo.svg" class="w-auto"
-                      style="height:32px;"></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="w-auto flex-grow-1">
-    <div class="tovAx__lesson--nextLessonCard position-sticky d-flex flex-fill bg-light flex-column p-0 rounded shadow-sm">
-
-    </div>
-  </div>
-</div>
-<!-- END COMPONENT QUERY WRAPPER DIRECTLY AFTER THIS-->
-</div>
-<!-- END COMPONENT QUERY CONTAINER DIRECTLY AFTER THIS-->
-</div>
+{{< tovuti/global/lessonActivity-event >}}
 {{< /example >}}
 
 <!-- markdownlint-restore -->
