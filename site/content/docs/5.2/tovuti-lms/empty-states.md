@@ -1,10 +1,9 @@
 ---
 layout: docs
-title: Tovuti Empty States
+title: Empty States
 description:
 group: extend
-aliases:
-  - "/docs/5.2/extend/"
+toc: true
 ---
 
 

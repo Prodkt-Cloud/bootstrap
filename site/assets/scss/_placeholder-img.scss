@@ -8,8 +8,39 @@
   @include font-size(1.125rem);
   user-select: none;
   text-anchor: middle;
+background-image: url(../../static/docs/5.2/assets/img/placeholder.svg);
+background-repeat: repeat;
+background-position: center center;
+
 }
 
+
+.tov-placeholder-img {
+  user-select: none;
+  text-anchor: middle;
+background-image: url(../../static/docs/5.2/assets/img/placeholder.svg);
+background-repeat: repeat;
+background-position: center center;
+
+}
+
+
+.bd-placeholder-img.rotate-state-vertical {
+
+
+  text.tov-controller {
+    // transform-origin: 50% 0% !important;
+    transform: rotate(90deg) translate(-25%, -60%) !important;
+    text-anchor: start !important;
+    // transform-origin: 50% 0% !important;
+    // transform: rotate(90deg) translate(250%, -50%) !important;
+    fill: red !important;
+    font-size: 24px !important;
+  }
+}
+
+// scss-docs-end rotate
 .bd-placeholder-img-lg {
   @include font-size(3.5rem);
 }
+

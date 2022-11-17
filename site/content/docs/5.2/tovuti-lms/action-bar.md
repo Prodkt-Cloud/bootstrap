@@ -3,8 +3,6 @@ layout: docs
 title: Tovuti Action Bar
 description: Learn about the guiding principles, strategies, and techniques used to build and maintain Bootstrap so you can more easily customize and extend it yourself.
 group: extend
-aliases:
-  - "/docs/5.2/extend/"
 ---
 
 

@@ -3,6 +3,7 @@ layout: docs
 title: Brand
 description:
 group: extend
+toc: true
 aliases:
   - "/docs/5.2/extend/"
 ---
