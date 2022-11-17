@@ -1,7 +1,5 @@
-
-
 <div class="tovAx__componentQuery__container d-flex flex-column h-100 w-100 gap-4">
-  <div  class="w-100 p-0 rounded"
+  <div class="w-100 p-0 rounded"
     style="background-image: url('/docs/5.2/assets/img/placeholder_component.svg');  width: 100%; height:96px;  background-position: 50% 44%; background-size: fill; background-attachment: fixed;">
   </div>
   <div class="d-flex flex-row w-100 gap-4">
@@ -28,8 +26,8 @@
           <div class="card border-0">
             <div class="row g-0">
               <div class="tov-lessonActivity-event_coverImgage col-3 border border-0 position-relative">
-                <img src="/docs/5.2/assets/img/placeholder.svg" alt="" class="border-0 object-fit-cover img-fluid border-0"
-                  style="background-position: center center;">
+                <img src="/docs/5.2/assets/img/placeholder.svg" alt=""
+                  class="border-0 object-fit-cover img-fluid border-0" style="background-position: center center;">
               </div>
               <div class=" col-12 col-lg-9 flex-fill p-0">
                 <div class="card-body p-0">
@@ -163,43 +161,314 @@
   </div>
   <!-- END COMPONENT QUERY CONTAINER DIRECTLY AFTER THIS-->
 </div>
+<hr class="my-3 w-100 h-100">
+<div class="tovAi-shell-container d-flex flex-column w-100 gap-3 w-100">
+  <div class="w-100 p-0 rounded"
+    style="background-image: url('/docs/5.2/assets/img/placeholder_component.svg');  width: 100%; height:96px;  background-position: 50% 44%; background-size: fill; background-attachment: fixed;">
+  </div>
+  <div class="d-flex flex-row flex-wrap w-100 p-0 rounded">
+    <div class="d-flex flex-row w-100 gap-3">
+      <div class=" d-flex flex-row h-100 w-25 p-0 gap-3 rounded">
+        <div class="w-25 h-100 rounded"
+          style="background-image: url('/docs/5.2/assets/img/placeholder_component.svg');  width: 100%; height:96px;  background-position: 50% 44%; background-size: fill; background-attachment: fixed;">
+        </div>
+        <div class="w-75 h-100 rounded"
+          style="background-image: url('/docs/5.2/assets/img/placeholder_component.svg');  width: 100%; height:96px;  background-position: 50% 44%; background-size: fill; background-attachment: fixed;">
+        </div>
+      </div>
+      <div class="d-flex flex-column w-75 p-0 gap-3 rounded">
+        <div class="d-flex flex-column w-100 p-0 gap-1 rounded">
+          <div class="w-100 rounded"
+            style="background-image: url('/docs/5.2/assets/img/placeholder_component.svg');  width: 100%; height:40px;  background-position: 50% 44%; background-size: fill; background-attachment: fixed;">
+          </div>
+          <div class="w-100 rounded"
+            style="background-image: url('/docs/5.2/assets/img/placeholder_component.svg');  width: 100%; height:40px;  background-position: 50% 44%; background-size: fill; background-attachment: fixed;">
+          </div>
+          <div class="w-100 rounded"
+            style="background-image: url('/docs/5.2/assets/img/placeholder_component.svg');  width: 100%; height:40px;  background-position: 50% 44%; background-size: fill; background-attachment: fixed;">
+          </div>
+        </div>
+        <div class="w-100">
 
-{{ define "lessonActivity-event" }}
+          <div class="d-flex flex-column bg-white 0  rounded border w-100 h-100">
 
-{{ $event := .Get "event" }}
+            <div class="d-flex flex-row border-bottom w-100 h-100">
+              <div class="d-flex flex-column flex-fill gap-3 p-4 border-end">
+                <div class="">
+                  <label for="exampleFormControlInput1" class="form-label">Activity Title</label>
+                  <input type="name" class="form-control" id="exampleFormControlInput1" placeholder="My Awesome Event!">
+                </div>
+                <div class="">
+                  <label for="primaryLanguage" class="form-label">Select Event</label>
+                  <select class="form-control" data-trigger name="choices-single-default" id="choices-single-default"
+                    placeholder="My Awesome Event!">
+                    <option value="Design Accessibility">Design Accessibility</option>
+                    <option value="Design Composition">Design Composition</option>
+                    <option value="UX Design Foundations">UX Design Foundations</option>
+                    <option value="Design Terminology">Design Terminology</option>
+                    <option value="UI Components 101">UI Components 101</option>
+                    <option value="Color Psychology">Color Psychology</option>
+                    <option value="Common Design Patterns">Common Design Patterns</option>
+                    <option value="Mobile Design">Mobile Design</option>
+                    <option value="CSS for Designers">CSS for Designers</option>
+                    <option value="HTML for Designers">HTML for Designers</option>
+                  </select>
+                </div>
+                <div class="">
+                  <label for="exampleFormControlTextarea1" class="form-label">Instructions</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+                <div class="">
+                  <label for="exampleFormControlTextarea1" class="form-label">External Event URL</label>
+                  <div class="input-group">
+                    <span class="input-group-text" id="basic-addon1">https://</span>
+                    <input type="text" class="form-control" placeholder="tovuti.io/event-registration" aria-label="External Event Signup"
+                      aria-describedby="basic-addon1">
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex flex-column flex-fill gap-3 p-4">
+                <div class="">
 
-{{ $lesson := .Get "lesson" }}
 
-{{ $activity := .Get "activity" }}
 
-{{ $eventID := $event.ID }}
+                  <label for="exampleFormControlTextarea1" class="form-label">Select Event Image</label>
+<!-- File Upload -->
+<form action="/" method="post" class="dropzone" id="myAwesomeDropzone" data-plugin="dropzone" data-previews-container="#file-previews"
+    data-upload-preview-template="#uploadPreviewTemplate">
+    <div class="fallback">
+        <input name="file" type="file" multiple />
+    </div>
 
-{{ $lessonID := $lesson.ID }}
+    <div class="dz-message needsclick">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo-up" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+        <path d="M15 8h.01"></path>
+        <path d="M12 20h-5a3 3 0 0 1 -3 -3v-10a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v5"></path>
+        <path d="M4 15l4 -4c.928 -.893 2.072 -.893 3 0l4 4"></path>
+        <path d="M14 14l1 -1c.617 -.593 1.328 -.793 2.009 -.598"></path>
+        <path d="M19 22v-6"></path>
+        <path d="M22 19l-3 -3l-3 3"></path>
+     </svg>
+        <h5 class="fw-normal mt-2 fs-6">Drop files here or click to upload.</h5>
 
-{{ $activityID := $activity.ID }}
+    </div>
+</form>
 
-{{ $eventTitle := $event.Title }}
+<!-- Preview -->
+<div class="dropzone-previews mt-3" id="file-previews"></div>
 
-{{ $lessonTitle := $lesson.Title }}
+<!-- file preview template -->
+<div class="d-none" id="uploadPreviewTemplate">
+    <div class="card mt-1 mb-0 shadow-none border">
+        <div class="p-2">
+            <div class="row align-items-center">
+                <div class="col-auto">
+                    <img data-dz-thumbnail src="#" class="avatar-sm rounded bg-light" alt="">
+                </div>
+                <div class="col ps-0">
+                    <a href="javascript:void(0);" class="text-muted fw-bold" data-dz-name></a>
+                    <p class="mb-0" data-dz-size></p>
+                </div>
+                <div class="col-auto">
+                    <!-- Button -->
+                    <a href="" class="btn btn-link btn-lg text-muted" data-dz-remove>
+                        <i class="ri-close-line"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-{{ $activityTitle := $activity.Title }}
 
-{{ $eventURL := $event.URL }}
+                </div>
+                <div class="">
+                  <label for="exampleFormControlTextarea1" class="form-label">Columns</label>
+                  <div class="d-flex flex-row flex-wrap flex-fill justify-content-between gap-2">
+                    <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked>
+                    <label class="btn btn-light d-flex flex-column w-auto text-start gap-2" for="option1">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-layout-sidebar" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+                        <line x1="9" y1="4" x2="9" y2="20"></line>
+                     </svg>
+                      1/3 Column</label>
 
-{{ $lessonURL := $lesson.URL }}
+                    <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
+                    <label class="btn btn-light d-flex flex-column w-auto text-start gap-2" for="option2">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-layout-columns" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+                        <line x1="12" y1="4" x2="12" y2="20"></line>
+                     </svg>
+                      1/2 Column</label>
 
-{{ $activityURL := $activity.URL }}
+                    <input type="radio" class="btn-check" name="options" id="option4" autocomplete="off">
+                    <label class="btn btn-light d-flex flex-column w-auto flex-fill text-start gap-2" for="option4">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-section" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M20 20h.01"></path>
+                        <path d="M4 20h.01"></path>
+                        <path d="M8 20h.01"></path>
+                        <path d="M12 20h.01"></path>
+                        <path d="M16 20h.01"></path>
+                        <path d="M20 4h.01"></path>
+                        <path d="M4 4h.01"></path>
+                        <path d="M8 4h.01"></path>
+                        <path d="M12 4h.01"></path>
+                        <path d="M16 4l0 0"></path>
+                        <rect x="4" y="8" width="16" height="8" rx="1"></rect>
+                     </svg>
+                      Full Width</label>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex align-items-start p-2 border-start"><button class="btn btn-light border shadow-none"><i
+                    class="fa-solid fa-grip-lines"></i></button></div>
+            </div>
+            <div class="d-flex flex-row justify-content-evenly w-100">
+              <div class="d-flex p-3">
+                <div class="form-check form-switch d-flex flex-column justify-content-center align-items-middle ps-0">
+                  <input class="form-check-input ms-0" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                  <label class="form-check-label" for="flexSwitchCheckDefault">Required</label>
+                </div>
+              </div>
+              <div class="d-flex p-3">
+                <div class="form-check form-switch d-flex flex-column justify-content-center align-items-middle ps-0">
+                  <input class="form-check-input ms-0" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                  <label class="form-check-label" for="flexSwitchCheckDefault">Expiration Reporting</label>
+                </div>
+              </div>
+              <div class="d-flex p-3">
+                <div class="form-check form-switch d-flex flex-column justify-content-center align-items-middle ps-0">
+                  <input class="form-check-input ms-0" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                  <label class="form-check-label" for="flexSwitchCheckDefault">Event Auto Check-in</label>
+                </div>
+              </div>
+              <div class="d-flex p-3">
+                <div class="form-check form-switch d-flex flex-column justify-content-center align-items-middle ps-0">
+                  <input class="form-check-input ms-0" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                  <label class="form-check-label" for="flexSwitchCheckDefault">Admin Approval Required</label>
+                </div>
+              </div>
+            </div>
 
-{{ $eventDate := $event.Date }}
+          </div>
 
-{{ $lessonDate := $lesson.Date }}
+        </div>
+      </div>
+    </div>
+  </div>
 
-{{ $activityDate := $activity.Date }}
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var genericExamples = document.querySelectorAll('[data-trigger]');
+      for (i = 0; i < genericExamples.length; ++i) {
+        var element = genericExamples[i];
+        new Choices(element, {
+          allowHTML: true,
+          removeItemButton: true,
+          shouldSort: true,
+          placeholderValue: 'Select Event',
+          searchPlaceholderValue: 'Search your Events',
+          noResultsText: 'No results found',
+          // itemSelectText: 'Press to add',
+          searchEnabled: true,
+          searchChoices: true,
+          searchFloor: 1,
+        });
+      }
 
-{{ $eventDateFormatted := $event.Date.Format "2006-01-02" }}
 
-{{ $lessonDateFormatted := $lesson.Date.Format "2006-01-02" }}
+        /* Use label on event */
+        var choicesSelect = new Choices('#choices-multiple-labels', {
+          allowHTML: true,
+          removeItemButton: true,
+          // choices: [
+          //   { value: 'One', label: 'Label One' },
+          //   { value: 'Two', label: 'Label Two', disabled: true },
+          //   { value: 'Three', label: 'Label Three' },
+          // ],
+        })
+        .setChoices(
+        //   [
+        //     { value: 'Four', label: 'Label Four', disabled: true },
+        //     { value: 'Five', label: 'Label Five' },
+        //     { value: 'Six', label: 'Label Six', selected: true },
+        //   ],
+          'value',
+          'label',
+          false
+        );
 
-{{ $activityDateFormatted := $activity.Date.Format "2006-01-02" }}
 
-{{ end }}
+      choicesSelect.passedElement.element.addEventListener(
+        'addItem',
+        function (event) {
+          document.getElementById('message').innerHTML =
+            'You just added "' + event.detail.label + '"';
+        }
+      );
+
+      choicesSelect.passedElement.element.addEventListener(
+        'removeItem',
+        function (event) {
+          document.getElementById('message').innerHTML =
+            'You just removed "' + event.detail.label + '"';
+        }
+      );
+
+      var resetSimple = new Choices(document.getElementById('reset-simple'), {
+        allowHTML: true,
+      });
+
+      var resetMultiple = new Choices('#reset-multiple', {
+        allowHTML: true,
+        removeItemButton: true,
+      });
+    });
+  </script>
+
+  <script>!function(e){"use strict";function t(){this.$body=e("body")}t.prototype.init=function(){Dropzone.autoDiscover=!1,e('[data-plugin="dropzone"]').each(function(){var t=e(this).attr("action"),i=e(this).data("previewsContainer"),t={url:t},i=(i&&(t.previewsContainer=i),e(this).data("uploadPreviewTemplate"));i&&(t.previewTemplate=e(i).html()),e(this).dropzone(t)})},e.FileUpload=new t,e.FileUpload.Constructor=t}(window.jQuery),function(){"use strict";window.jQuery.FileUpload.init()}();</script>
+
+
+  {{ define "lessonActivity-event" }}
+
+  {{ $event := .Get "event" }}
+
+  {{ $lesson := .Get "lesson" }}
+
+  {{ $activity := .Get "activity" }}
+
+  {{ $eventID := $event.ID }}
+
+  {{ $lessonID := $lesson.ID }}
+
+  {{ $activityID := $activity.ID }}
+
+  {{ $eventTitle := $event.Title }}
+
+  {{ $lessonTitle := $lesson.Title }}
+
+  {{ $activityTitle := $activity.Title }}
+
+  {{ $eventURL := $event.URL }}
+
+  {{ $lessonURL := $lesson.URL }}
+
+  {{ $activityURL := $activity.URL }}
+
+  {{ $eventDate := $event.Date }}
+
+  {{ $lessonDate := $lesson.Date }}
+
+  {{ $activityDate := $activity.Date }}
+
+  {{ $eventDateFormatted := $event.Date.Format "2006-01-02" }}
+
+  {{ $lessonDateFormatted := $lesson.Date.Format "2006-01-02" }}
+
+  {{ $activityDateFormatted := $activity.Date.Format "2006-01-02" }}
+
+  {{ end }}
