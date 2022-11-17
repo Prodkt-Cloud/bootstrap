@@ -4,6 +4,8 @@ title: Event Activity
 description:
 group: extend
 toc: true
+lx-head: true
+lx-sideNav: true
 ---
 ## In Review
 
@@ -17,7 +19,6 @@ toc: true
 
 - **Clean to spec Container Query Breakpoints**
 - **Design should be included in all reviews of this project**
-
 
 CSS containment provides a way to isolate parts of a page and declare to the browser these parts are independent from the rest of the page in terms of styles and layout.
 
@@ -172,5 +173,4 @@ If we want to use a single-column layout for devices with a smaller viewport, we
 {{< example >}}
 {{< tovuti/global/lessonActivity-event >}}
 {{< /example >}}
-
 <!-- markdownlint-restore -->

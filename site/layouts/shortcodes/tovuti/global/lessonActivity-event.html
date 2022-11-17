@@ -1,9 +1,9 @@
+
+
 <div class="tovAx__componentQuery__container d-flex flex-column h-100 w-100 gap-4">
-  {{ tovAx__header param1 }}
-  <div class="w-100 p-0 rounded"
+  <div  class="w-100 p-0 rounded"
     style="background-image: url('/docs/5.2/assets/img/placeholder_component.svg');  width: 100%; height:96px;  background-position: 50% 44%; background-size: fill; background-attachment: fixed;">
   </div>
-  {{ /tovAx__header }}
   <div class="d-flex flex-row w-100 gap-4">
     <div class="dragTovAxSideNavWrapper rounded mh-100"
       style="background-image: url('/docs/5.2/assets/img/placeholder_component.svg'); background-attachment: fixed; width: 220px;">
@@ -163,3 +163,42 @@
   </div>
   <!-- END COMPONENT QUERY CONTAINER DIRECTLY AFTER THIS-->
 </div>
+{{ define "lessonActivity-event" }}
+
+{{ $event := .Get "event" }}
+
+{{ $lesson := .Get "lesson" }}
+
+{{ $activity := .Get "activity" }}
+
+{{ $eventID := $event.ID }}
+
+{{ $lessonID := $lesson.ID }}
+
+{{ $activityID := $activity.ID }}
+
+{{ $eventTitle := $event.Title }}
+
+{{ $lessonTitle := $lesson.Title }}
+
+{{ $activityTitle := $activity.Title }}
+
+{{ $eventURL := $event.URL }}
+
+{{ $lessonURL := $lesson.URL }}
+
+{{ $activityURL := $activity.URL }}
+
+{{ $eventDate := $event.Date }}
+
+{{ $lessonDate := $lesson.Date }}
+
+{{ $activityDate := $activity.Date }}
+
+{{ $eventDateFormatted := $event.Date.Format "2006-01-02" }}
+
+{{ $lessonDateFormatted := $lesson.Date.Format "2006-01-02" }}
+
+{{ $activityDateFormatted := $activity.Date.Format "2006-01-02" }}
+
+{{ end }}
