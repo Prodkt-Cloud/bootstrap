@@ -5,7 +5,7 @@
 .bd-example-snippet {
   border: solid $border-color;
   border-width: 0px 0;
-  background-color: $gray-100;
+  // background-color: $gray-100;
 
   @include media-breakpoint-up(md) {
     border-width: 0px;
@@ -308,7 +308,8 @@
 
 .highlight {
   position: relative;
-  padding: .75rem ($bd-gutter-x * .5);
+  // padding: .75rem ($bd-gutter-x * .5);
+  padding:0;
   margin-bottom: 1rem;
   background-color: var(--bs-gray-100);
 
@@ -320,8 +321,10 @@
   pre {
     padding: 0;
     margin-top: .625rem;
-    margin-right: 1.875rem;
-    margin-bottom: .625rem;
+    // margin-right: 1.875rem;
+    margin-right: 0rem;
+    // margin-bottom: .625rem;
+    margin-bottom: 0rem;
     white-space: pre;
     background-color: transparent;
     border: 0;

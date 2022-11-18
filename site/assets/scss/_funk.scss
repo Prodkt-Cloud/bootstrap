@@ -55,7 +55,8 @@
   /* border: 1px solid red !important; */
   flex: 1;
   flex-wrap: wrap;
-  // min-width: 375px;
+
+  min-width: 280px;
   width:100%;
   max-width: 100%;
   contain: content;
@@ -64,8 +65,13 @@
 
 @container responsive-container (min-width: 375px) {
   .bd-example {
-    min-width: 375px;
     contain: content;
+  }
+}
+
+@container responsive-container (max-width: 375px) {
+  .calContainer {
+    .vr { display: none; }
   }
 }
 
@@ -105,7 +111,7 @@
     height: auto;
     top: 88px;
     bottom: 0;
-    min-width: 280px;
+    min-width: 200px;
   }
 
   .tovAx__lesson--nextLessonCard {
@@ -326,19 +332,20 @@ responsive-container.C4::before {
  * LESSON ACTIVITY: EVENT
  * ------------------------------------------------------------------------ \\
  */
-.XS .tov-lessonActivity-event {
-  .tov-lessonActivity-event_coverImgage {
+.tov-lessonActivity-event_coverImage {
+  height:140px;
+  max-height: 140px;
+  background-image: url('/docs/5.2/assets/img/tovuti/placeholder_dark_6.svg');
+}
+
+.XS.tov-lessonActivity-event {
+  .tov-lessonActivity-event_coverImage {
     display: none;
   }
 }
 
-.SM .tov-lessonActivity-event {
-  .tov-lessonActivity-event_coverImgage {
+.SM.tov-lessonActivity-event {
+  .tov-lessonActivity-event_coverImage {
     display: flex;
   }
 }
-
-
-
-
-
