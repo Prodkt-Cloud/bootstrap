@@ -7,11 +7,20 @@
   pages:
     - title: Introduction
     - title: Browsers & devices
-    - title: JavaScript
+    # - title: JavaScript
     # - title: Vite
     - title: Accessibility
-    - title: RFS
+    # - title: RFS
     - title: RTL
+
+- title: Tovuti LMS
+  icon: tools
+  icon_color: orange
+  pages:
+    - title: Action Bar
+    - title: Empty States
+    - title: Event Activity
+    - title: Brand
 
 - title: Customize
   icon: palette2
@@ -128,15 +137,6 @@
     - title: Text
     - title: Vertical align
     - title: Visibility
-
-- title: Tovuti LMS
-  icon: tools
-  icon_color: blue
-  pages:
-    - title: Action Bar
-    - title: Empty States
-    - title: Event Activity
-    - title: Brand
 
 - title: About
   icon: globe2

@@ -55,9 +55,11 @@
   /* border: 1px solid red !important; */
   flex: 1;
   flex-wrap: wrap;
-  min-width: 375px;
+  // min-width: 375px;
+  width:100%;
   max-width: 100%;
   contain: content;
+  touch-action: none;
 }
 
 @container responsive-container (min-width: 375px) {
@@ -86,13 +88,11 @@
     right: 0;
     bottom: 0;
     width: 100%;
-    height: 100%;
-    background-color: $light !important;
+    height: subtract(100vh, 3rem);
     margin: 0 0 0 0;
     z-index: 9999;
 
     .tovAxExampleExpanded {
-      background-color: $danger !important;
       position: fixed;
       right: 50%;
       left: auto;
@@ -109,13 +109,13 @@
   }
 
   .tovAx__lesson--nextLessonCard {
-    background-image: url("/docs/5.2/assets/img/placeholder_component.svg");
+    background-image: url("/docs/5.2/assets/img/tovuti/placeholder_component_dark_4.svg");
     max-width: 100%;
     width: 100%;
     max-height: 300px;
     aspect-ratio: 1 / 1;
     background-position: 50% 50%;
-    background-size: fill;
+    background-size: cover;
     background-attachment: fixed;
   }
 }
@@ -210,32 +210,32 @@ responsive-container.XL::before {
 .XS[data-observe-resizes],
 responsive-container.XS {
   outline: 2px solid #cea964;
-  outline-offset: 4px;
+  outline-offset: -1px;
   border-radius: $border-radius-lg;
 }
 
 .SM[data-observe-resizes],
 responsive-container.SM {
   outline: 2px solid #40bf80;
-  outline-offset: 4px;
+  outline-offset: -1px;
   border-radius: $border-radius-lg;
 }
 .MD[data-observe-resizes],
 responsive-container.MD {
   outline: 2px solid #33b2cc;
-  outline-offset: 4px;
+  outline-offset: -1px;
   border-radius: $border-radius-lg;
 }
 .LG[data-observe-resizes],
 responsive-container.LG {
   outline: 2px solid #bc79ec;
-  outline-offset: 4px;
+  outline-offset: -1px;
   border-radius: $border-radius-lg;
 }
 .XL[data-observe-resizes],
 responsive-container.XL {
   outline: 2px solid #f0427c;
-  outline-offset: 4px;
+  outline-offset: -1px;
   border-radius: $border-radius-lg;
 }
 
@@ -336,33 +336,6 @@ responsive-container.C4::before {
   .tov-lessonActivity-event_coverImgage {
     display: flex;
   }
-}
-
-
-
-form#myAwesomeDropzone.dropzone.dz-clickable {
-	background: #ffffff none repeat scroll 0% 0% / auto padding-box border-box;
-	border: 2px dashed #dee2e6;
-	border-radius: 6px;
-	box-sizing: border-box;
-	color: #6c757d;
-	cursor: pointer;
-	font-size: 14.4px;
-	line-height: 21.6px;
-	min-height: 150px;
-	padding: 20px;
-	word-wrap: break-word;
-}
-
-div.dz-message.needsclick {
-	box-sizing: border-box;
-	color: #6c757d;
-	cursor: pointer;
-	font-size: 14.4px;
-	line-height: 21.6px;
-	margin: 2rem 0px;
-	text-align: center;
-	word-wrap: break-word;
 }
 
 

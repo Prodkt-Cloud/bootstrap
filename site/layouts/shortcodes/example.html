@@ -20,7 +20,7 @@
 {{- $content := .Inner -}}
 
 
-<div x-data="{ open: false }" :class="open ? 'expand' : ''" class="p-3 mt-5 align-items-middle bd-example-snippet bd-code-snippet bg-light" style="touch-action: none; box-sizing: border-box;">
+<div x-data="{ open: false }" :class="open ? 'expand' : ''" class="p-3 mt-5 align-items-middle bd-example-snippet bd-code-snippet" style="touch-action: none; box-sizing: border-box;">
   <div class="tovAxExampleExpanded d-flex justify-content-center p-0 mb-3 rounded-3 mx-n1"><button x-on:click="open = ! open" class="btn btn-sm btn-bd-primary d-flex justify-content-center align-items-center p-0 lh-0" style="width:48px; height: 48px;"><i class="fa-solid fa-expand"></i></button></div>
   {{- if eq $show_preview true -}}
   <div{{ with $id }} id="{{ . }}"{{ end }} class="responsive-container XS SM MD LG XL tov-test resizable p-3 m-0 h-auto bd-example{{ with $class }} {{ . }}{{ end }}" style="touch-action: none; box-sizing: border-box;" data-observe-resizes>

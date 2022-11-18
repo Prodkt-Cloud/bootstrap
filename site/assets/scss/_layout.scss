@@ -7,7 +7,7 @@
   @include media-breakpoint-up(lg) {
     display: grid;
     grid-template-areas: "sidebar main";
-    grid-template-columns: 1fr 5fr;
+    grid-template-columns: 280px 1fr;
     gap: $grid-gutter-width;
   }
 }
@@ -18,6 +18,7 @@
 
 .bd-main {
   grid-area: main;
+  touch-action: none;
 
   @include media-breakpoint-down(lg) {
     max-width: 760px;
@@ -39,7 +40,7 @@
       "intro   toc"
       "content toc";
     grid-template-rows: auto 1fr;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto 200px;
   }
 }
 
@@ -53,5 +54,7 @@
 
 .bd-content {
   grid-area: content;
+  touch-action: none;
+  box-sizing: border-box;
   min-width: 1px; // Fix width when bd-content contains a `<pre>` https://github.com/twbs/bootstrap/issues/25410
 }

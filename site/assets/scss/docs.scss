@@ -71,13 +71,7 @@ $enable-cssgrid: true; // stylelint-disable-line scss/dollar-variable-default
 @import "theme/card";
 @import "theme/forms";
 @import "theme/vendor/choicesjs";
-
-
 @import "buttons";
-
-
-@import "theme/pages/event-activities";
-
 // Load docs dependencies
 @import "syntax";
 @import "anchor";
