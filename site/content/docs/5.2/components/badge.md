@@ -77,6 +77,21 @@ Set a `background-color` with contrasting foreground `color` with [our `.text-bg
 {{< partial "callout-warning-color-assistive-technologies.md" >}}
 {{< /callout >}}
 
+## Numbered Badges
+
+<!-- {{< added-in "5.2.0" >}} -->
+
+<!-- Set a `background-color` with contrasting foreground `color` with [our `.text-bg-{color}` helpers]({{< docsref "helpers/color-background" >}}). Previously it was required to manually pair your choice of [`.text-{color}`]({{< docsref "/utilities/colors" >}}) and [`.bg-{color}`]({{< docsref "/utilities/background" >}}) utilities for styling, which you still may use if you prefer. -->
+
+{{< example >}}
+{{< badge.inline >}}
+{{- range (index $.Site.Data "theme-colors") }}
+<div class="badge d-inline-flex align-items-center gap-1 overflow-hidden border border-blue-100 py-0 ps-1 text-{{ .name }}"><i class="fa-sharp fa-solid fa-rocket-launch"></i>{{ .name | title }}<span class="text-body fw-normal me-n2 p-1 border-start border-blue-100">1,234</span></div>{{- end -}}
+{{< /badge.inline >}}
+{{< /example >}}
+
+
+
 ## Pill badges
 
 Use the `.rounded-pill` utility class to make badges more rounded with a larger `border-radius`.
