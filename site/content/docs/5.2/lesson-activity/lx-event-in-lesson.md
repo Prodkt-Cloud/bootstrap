@@ -17,7 +17,6 @@ aliases: "/docs/5.2/"
   You might notice with padding inside the container query for our documentation that we more or less go down to 280px. Though we will most always support our own components and designs at that width we are not bound to accdomidate that low of viewport and most notible here is we can't guarantee any brought over components from client libraries. Clients would support their own libraries at this width if they truly have a need for it.
 
 ## All Options
-
 <!-- markdownlint-disable -->
 {{< example >}}
 {{< tovuti/lx/lesson/activity/events >}}
@@ -25,10 +24,20 @@ aliases: "/docs/5.2/"
 <!-- markdownlint-restore -->
 
 ## Unregistered / On-location / Monetized
-
 <!-- markdownlint-disable -->
 {{< example >}}
 {{< tovuti/lx/lesson/activity/event-example-1 >}}
 {{< /example >}}
 <!-- markdownlint-restore -->
-
+## Full Event - Join the Waitlist
+<!-- markdownlint-disable -->
+{{< example >}}
+{{< tovuti/lx/lesson/activity/event-example-2 >}}
+{{< /example >}}
+<!-- markdownlint-restore -->
+## Registered / Check-in / Add to Calendar
+<!-- markdownlint-disable -->
+{{< example >}}
+{{< tovuti/lx/lesson/activity/event-example-3 >}}
+{{< /example >}}
+<!-- markdownlint-restore -->
