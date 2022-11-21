@@ -18,8 +18,8 @@
   position: relative;
   padding: var(--bd-example-padding);
   margin: 0 ($bd-gutter-x * 1.5);
-  outline: 2px solid $gray-400;
-  outline-offset: 4px;
+  outline: 0px solid $gray-400;
+  outline-offset: 0px;
   @include clearfix();
 
   @include media-breakpoint-up(md) {

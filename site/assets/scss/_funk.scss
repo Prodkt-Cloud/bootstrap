@@ -17,6 +17,21 @@
   }
 }
 
+.ax-placeholder {
+  color: $white;
+  weight: 600;
+}
+
+.funkCustomExperienceWrapper {
+  width: 100%;
+  position:relative;
+  display: block;
+  align-items: top;
+  justify-content: center;
+  text-align:center;
+  min-width: 280px;
+}
+
 /*
  *  STYLE 1
  */
@@ -52,11 +67,8 @@
 .bd-example {
   container: inline-size;
   container-name: responsive-container;
-  /* border: 1px solid red !important; */
   flex: 1;
   flex-wrap: wrap;
-
-  min-width: 280px;
   width:100%;
   max-width: 100%;
   contain: content;
@@ -78,7 +90,7 @@
 .bd-example-snippet {
   &.expand {
     .tovAx__lesson--nextLessonCard-container {
-      top: 8px !important;
+      top: -12px !important;
     }
 
     margin-top: 66px !important;
@@ -102,28 +114,44 @@
       position: fixed;
       right: 50%;
       left: auto;
+      margin: auto auto !important;
+      min-width:48px;
       top: 40px;
+      padding-left: 24px !important;
       z-index: 9999;
     }
   }
 
   .tovAx__lesson--nextLessonCard-container {
     height: auto;
-    top: 88px;
+    top: 70px;
     bottom: 0;
     min-width: 200px;
   }
 
   .tovAx__lesson--nextLessonCard {
-    background-image: url("/docs/5.2/assets/img/tovuti/placeholder_component_dark_4.svg");
+    // background-image: url("/docs/5.2/assets/img/tovuti/placeholder1.jpg");
+    background-color: white;
     max-width: 100%;
     width: 100%;
+    border: 1px dashed var(--bs-gray-300);
     max-height: 300px;
     aspect-ratio: 1 / 1;
     background-position: 50% 50%;
-    background-size: cover;
+    // background-size: cover;
     background-attachment: fixed;
   }
+}
+
+.funkPlaceholder {
+  border: 1px dashed var(--bs-gray-300);
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  font-size: small;
+  color: var(--bs-gray-300);
 }
 /**
  * Ensures anchor links are fixed to the top of the page when JS is enabled,
@@ -216,32 +244,32 @@ responsive-container.XL::before {
 .XS[data-observe-resizes],
 responsive-container.XS {
   outline: 2px solid #cea964;
-  outline-offset: -1px;
+  outline-offset: -2px;
   border-radius: $border-radius-lg;
 }
 
 .SM[data-observe-resizes],
 responsive-container.SM {
   outline: 2px solid #40bf80;
-  outline-offset: -1px;
+  outline-offset: -2px;
   border-radius: $border-radius-lg;
 }
 .MD[data-observe-resizes],
 responsive-container.MD {
   outline: 2px solid #33b2cc;
-  outline-offset: -1px;
+  outline-offset: -2px;
   border-radius: $border-radius-lg;
 }
 .LG[data-observe-resizes],
 responsive-container.LG {
   outline: 2px solid #bc79ec;
-  outline-offset: -1px;
+  outline-offset: -2px;
   border-radius: $border-radius-lg;
 }
 .XL[data-observe-resizes],
 responsive-container.XL {
   outline: 2px solid #f0427c;
-  outline-offset: -1px;
+  outline-offset: -2px;
   border-radius: $border-radius-lg;
 }
 
@@ -335,7 +363,6 @@ responsive-container.C4::before {
 .tov-lessonActivity-event_coverImage {
   height:140px;
   max-height: 140px;
-  background-image: url('/docs/5.2/assets/img/tovuti/placeholder_dark_6.svg');
 }
 
 .XS.tov-lessonActivity-event {
