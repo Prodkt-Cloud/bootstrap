@@ -35,7 +35,7 @@
   {{- if eq $show_markup true -}}
     {{- if eq $show_preview true -}}
       <div class="d-flex align-items-center highlight-toolbar py-2">
-        <small class="font-monospace text-muted text-uppercase pt-3">{{- $lang -}}</small>
+
       </div>
 
     {{- end -}}
@@ -44,8 +44,20 @@
     {{- $content = replaceRE `<svg class="bd-placeholder-img(?:-lg)?(?: *?bd-placeholder-img-lg)? ?(.*?)".*?<\/svg>` `<img src="..." class="$1" alt="...">` $content -}}
     {{- $content = replaceRE `<img class="bd-placeholder-img(?:-lg)?(?: *?bd-placeholder-img-lg)? ?(.*?)".*?>` `<img src="..." class="$1" alt="...">` $content -}}
     {{- $content = replaceRE ` (class=" *?")` "" $content -}}
-
-  {{- highlight (trim $content "\n") $lang "" -}}
+    <div class="accordion" id="accordionExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <small class="font-monospace text-muted text-uppercase">{{- $lang -}}</small>
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+             {{- highlight (trim $content "\n") $lang "" -}}
+          </div>
+        </div>
+      </div>
+    </div>
 </div>
   {{- end -}}
 

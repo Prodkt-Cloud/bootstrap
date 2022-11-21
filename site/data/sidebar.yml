@@ -18,9 +18,15 @@
   icon_color: orange
   pages:
     - title: Action Bar
-    - title: Empty States
-    - title: Event Activity
+    - title: Empty Statess
     - title: Brand
+
+- title: Lesson Activity
+  icon: tools
+  icon_color: purple
+  pages:
+    - title: (LX) Event in Lesson
+    - title: (AX) Event in Lesson
 
 - title: Customize
   icon: palette2
