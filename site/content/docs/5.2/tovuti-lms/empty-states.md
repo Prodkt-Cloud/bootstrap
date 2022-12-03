@@ -63,7 +63,7 @@ toc: true
                   </div>
            </div>
         </div>
-        <div class="d-flex flex-column  align-items-start  w-50 bg-light gap-2 border-start p-4">
+        <div class="d-flex flex-column  align-items-start  w-50 bg-light gap-2 border-start p-4 text-start">
           <span class="badge rounded-pill text-bg-primary">NEW FEATURE</span>
           <p class="h3 text-muted mt-3">Introducing</p>
           <p class="h1">Pricing Modifiers</p>

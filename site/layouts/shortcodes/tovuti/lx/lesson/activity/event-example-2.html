@@ -25,7 +25,7 @@
         <div class="tov-lessonActivity-event border rounded shadow-sm overflow-hidden">
           <div class="card border-0">
             <div class="row g-0">
-              <div class="tov-lessonActivity-event_coverImage w-100 funkPlaceholder position-relative"  style="background-image: url(../../../../../../static/docs/5.2/assets/img/tovuti/space2.jpg);">
+              <div class="tov-lessonActivity-event_coverImage w-100 funkPlaceholder position-relative">
                 EVENT COVER IMAGE
               </div>
               <div class=" col-12 col-lg-9 flex-fill p-0">
@@ -37,6 +37,7 @@
                         class="isEditable"></span></p>
                   </div>
                   <div class="hstack flex-wrap gap-1 p-3 w-100 border-top">
+                    <!------------- START - Single Date ------------->
                     <div class="d-flex flex-wrap" x-data="{ value: ['11/09/2022'],
                               init() {
                                   let picker = flatpickr(this.$refs.picker, {
@@ -49,23 +50,38 @@
                           class="fw-bold fst-normal me-1">$date:</em></p>
                       <input class="border-0 ps-0 w-auto" x-ref="picker" type="text">
                     </div>
+                    <!------------- END - Single Date ------------->
+                    <!------------- START - Price ------------->
                     <p
                       class="d-flex flex-wrap w-100 justify-content-start align-items-center ps-2 py-2 my-0 gap-0 text-start">
                       <i class="fa fa-circle-dollar me-2"></i><em class="fw-bold fst-normal me-1">Price/per
-                        registrant:</em>$199.99
+                        registrant:</em>$price
                     </p>
+                    <!------------- END - Price ------------->
+                    <!------------- START - Event Start Time ------------->
                     <p class="ps-2 py-2 my-0 text-start w-100"><i class="fa fa-clock me-2"></i><em
                         class="fw-bold fst-normal me-1 w-100">Start time:</em>$time $anteMeridiem, $timeZone</p>
+                    <!------------- END - Event Start Time ------------->
+                    <!------------- START - Event End Time ------------->
                     <p class="ps-2 py-2 my-0 text-start w-100"><i class="fa fa-alarm-clock me-2"></i><em
                         class="fw-bold fst-normal me-1">End time:</em>$time $anteMeridiem, $timeZone</p>
-                    <p class="ps-2 py-2 my-0 text-start"><i class="fa fa-map me-2"></i><em
-                        class="fw-bold fst-normal me-1">Where:</em><a href="">Get Directions to this Event</a></p>
+                    <!------------- END - Event End Time ------------->
                   </div>
                   <div
-                    class="vstack bg-light flex-wrap gap-2 p-3 w-100 border-top align-items-bottom justify-content-start h-100">
+                    class="vstack bg-light flex-wrap gap-2 p-3 w-100 border-top align-items-bottom justify-content-between h-100">
+                    <span
+                      class="bg-danger bg-opacity-10 p-2 rounded text-danger text-decoration-none d-flex flex-fill gap-2 justify-content-center align-items-center"><i
+                        class="fa fa-circle-xmark"></i>Event is at max capacity</span>
+                    <span class="text-start py-2">Would you like to be added to the Waitlist? If a spot does become
+                      available you
+                      will be added as a registered attendee to this event.</span>
                     <button type="button"
-                      class="btn btn-primary text-decoration-none d-flex flex-fill gap-2 justify-content-center align-items-center"><i
-                        class="fa fa-right-to-bracket"></i>Register for this Event</button>
+                      class=" border text-decoration-none d-flex gap-2 justify-content-center align-items-center ps-2"
+                      x-data="{ status: false, status2: false }" x-on:click="status = !status"
+                      :class="status ? 'btn bg-success border-success bg-opacity-100 text-white' : 'btn bg-warning border-warning bg-opacity-10'"><i
+                        class="fa fa-circle-check text-white" :class="status ? '' : 'd-none'"></i><span
+                        class="text-start fs-6"
+                        x-text="status ? 'You are on the waiting list!': 'Join the Waiting List'"></span></button>
                     <button type="button"
                       class="btn btn-brand-white border text-black text-decoration-none d-flex gap-2 justify-content-center align-items-center ps-2"><i
                         class="fa fa-arrow-right"></i>More Details</button>
