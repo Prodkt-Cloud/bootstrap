@@ -1,0 +1,54 @@
+// scss-docs-start rotate
+// $rotate-state:                rotate(0deg) !default;
+// $rotate-states: (
+//       0: rotate(0deg),
+//       1: rotate(1deg),
+//       2: rotate(2deg),
+//       3: rotate(3deg),
+//       6: rotate(6deg),
+//       12: rotate(12deg),
+//       45: rotate(45deg),
+//       90: rotate(90deg),
+//       180: rotate(180deg),
+//     ) !default;
+
+    .rotate-state-0 {
+      transform: rotate(0deg);
+    }
+
+    .rotate-state-1 {
+      transform: rotate(1deg);
+    }
+
+    .rotate-state-2 {
+      transform: rotate(2deg);
+    }
+
+    .rotate-state-3 {
+      transform: rotate(3deg);
+    }
+
+    .rotate-state-6 {
+      transform: rotate(6deg) !important;
+    }
+
+    .rotate-state-12 {
+      transform: rotate(12deg) !important;
+    }
+
+    .rotate-state-45 {
+      transform: rotate(45deg) !important;
+    }
+
+    .rotate-state-90 {
+      transform: rotate(90deg) !important;
+
+      .bd-placeholder-img & {
+        transform: rotate(90deg) !important;
+      }
+    }
+
+    .rotate-state-180 {
+      transform: rotate(180deg) !important;
+    }
+

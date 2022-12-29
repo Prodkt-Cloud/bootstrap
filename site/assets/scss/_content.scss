@@ -3,6 +3,7 @@
 //
 
 .bd-content {
+  box-sizing: border-box;
   // Offset content from fixed navbar when jumping to headings
   > :target {
     padding-top: 5rem;

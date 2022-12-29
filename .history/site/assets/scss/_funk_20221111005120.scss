@@ -1,0 +1,446 @@
+:root {
+  --gutter: 1.5em;
+  --accentColor: hsl(300, 50%, 50%);
+  --accentColorMuted: hsl(300, 40%, 40%);
+  --material-easing: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (max-width: 23.97em) {
+  :root {
+    --gutter: 1.25rem;
+  }
+}
+
+@media (min-width: 72em) {
+  :root {
+    --gutter: 2rem;
+  }
+}
+
+
+/**
+ * Ensures anchor links are fixed to the top of the page when JS is enabled,
+ * so new page loads referencing an anchor always display the header.
+ * (this is unset in a <noscript> tag)
+ */
+ [data-section-anchor] {
+  position: fixed;
+  top: 0;
+}
+
+[data-demo-root] {
+  margin-bottom: 1.5em;
+}
+
+[data-observe-resizes],
+responsive-container {
+  contain: content;
+  overflow: hidden;
+  position: relative;
+}
+
+[data-observe-resizes]::before,
+responsive-container::before {
+  background-color: #ccc;
+  color: hsla(0, 100%, 100%, 0);
+  content: "\00a0";
+  font-size: 0.8em;
+  -webkit-font-smoothing: initial;
+  font-weight: 700;
+  letter-spacing: .1em;
+  position: absolute;
+  right: -3.1em;
+  text-align: center;
+  top: -1.2em;
+  transform: rotate(45deg);
+  transform-origin: 0 0;
+  width: 6em;
+  z-index: 10;
+}
+
+[data-observe-resizes][data-observing="true"]::before,
+responsive-container[observing]::before {
+  transition: background-color 0.2s var(--material-easing) 0.05s,
+    color 0.2s var(--material-easing) 0.05s;
+}
+
+[data-observe-resizes] [data-observe-resizes]::before,
+responsive-container responsive-container::before {
+  left: -1.2em;
+  right: auto;
+  top: 3.1em;
+  transform: rotate(-45deg);
+}
+
+.SM[data-observe-resizes]::before,
+responsive-container.SM::before {
+  background-color: #40bf80;
+  color: hsla(0, 100%, 100%, 100);
+  content: "SM";
+}
+
+.MD[data-observe-resizes]::before,
+responsive-container.MD::before {
+  background-color: #33b2cc;
+  content: "MD";
+}
+
+.LG[data-observe-resizes]::before,
+responsive-container.LG::before {
+  background-color: #bc79ec;
+  content: "LG";
+}
+
+.XL[data-observe-resizes]::before,
+responsive-container.XL::before {
+  background-color: #f0427c;
+  content: "XL";
+}
+
+/* Custom breakpoints */
+
+.C2[data-observe-resizes]::before,
+responsive-container.C2::before {
+  background-color: #40bf80;
+  color: hsla(0, 100%, 100%, 100);
+  content: "C2";
+}
+
+.C3[data-observe-resizes]::before,
+responsive-container.C3::before {
+  background-color: #33b2cc;
+  content: "C3";
+}
+
+.C4[data-observe-resizes]::before,
+responsive-container.C4::before {
+  background-color: #bc79ec;
+  content: "C4";
+}
+
+@media (max-width: 47.97em) {
+  .hidden\@MD {
+    display: none!important;
+  }
+}
+
+@media (min-width: 48em) {
+  .visible\@MD {
+    display: none!important;
+  }
+}
+
+@media (max-width: 59.97em) {
+  .hidden\@LG {
+    display: none!important;
+  }
+}
+
+@media (min-width: 60em) {
+  .visible\@LG {
+    display: none!important;
+  }
+}
+
+@media (max-width: 71.97em) {
+  .hidden\@XL {
+    display: none!important;
+  }
+}
+
+@media (min-width: 72em) {
+  .visible\@XL {
+    display: none!important;
+  }
+}
+
+
+
+.MultiColBox {
+  background: #fff;
+  border: 1px solid hsla(0, 0%, 0%, 0.075);
+  padding: 1.5em;
+}
+
+.MultiColBox-title {
+  border-bottom: 1px solid hsla(0, 0%, 0%, .1);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  margin-bottom: 1em;
+  padding-bottom: .5em;
+  text-transform: uppercase;
+}
+
+.MultiColBox-content {
+  column-count: 1;
+}
+
+.MultiColBox-content > aside {
+  color: #aaa;
+}
+
+/* -------------- */
+/* Breakpoint: C2 */
+/* -------------- */
+
+.C2 > .MultiColBox .MultiColBox-content {
+  column-count: 2;
+}
+
+/* -------------- */
+/* Breakpoint: C3 */
+/* -------------- */
+
+.C3 > .MultiColBox .MultiColBox-content {
+  column-count: 3;
+}
+
+/* -------------- */
+/* Breakpoint: C4 */
+/* -------------- */
+
+.C4 > .MultiColBox .MultiColBox-content {
+  column-count: 4;
+}
+
+
+.Calendar {
+  background: hsl(0, 0%, 100%);
+  border: 1px solid hsl(0, 0%, 93%);
+  padding: 0.2em 1em;
+}
+
+.Calendar-times {
+  display: none;
+}
+
+.Calendar-day {
+  border-top: 1px solid hsl(0, 0%, 92.5%);
+}
+
+.Calendar-day:first-of-type {
+  border: 0;
+}
+
+.Calendar-dayHeader {
+  position: relative;
+  flex: 0 0 4em;
+  margin-right: 1em;
+}
+
+.Calendar-date {
+  display: flex;
+  align-items: baseline;
+  padding: 0.75em 0;
+}
+
+.Calendar-dateMo {
+  font-size: 1.5em;
+  font-weight: 500;
+  line-height: 1;
+  margin-right: 0.2em;
+}
+
+.Calendar-dateWk {
+  font-size: 0.8em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.Calendar-entries {
+  margin: 0;
+  max-width: 100%;
+  padding: 0;
+}
+
+.Calendar-entry {
+  border: 1px solid hsl(0, 0%, 75%);
+  border-radius: 0.2em;
+  cursor: pointer;
+  line-height: 1.2;
+  list-style: none;
+  margin: 0 0 1em;
+  padding: 0.5em;
+}
+
+.Calendar-entryTime {
+  font-size: 0.9em;
+  font-weight: 600;
+  margin-bottom: 0.1em;
+}
+
+.Calendar-entryDesc {
+  font-size: 0.9em;
+}
+
+
+/* -------------- */
+/* Breakpoint: SM */
+/* -------------- */
+
+.SM > .Calendar .Calendar-day {
+  display: flex;
+}
+
+.SM > .Calendar .Calendar-dateMo {
+  margin: 0;
+}
+
+.SM > .Calendar .Calendar-entries {
+  flex: 1 0 0%;
+}
+
+.SM > .Calendar .Calendar-entry {
+  margin: 1em 0;
+}
+
+.SM > .Calendar .Calendar-date {
+  align-items: stretch;
+  position: sticky;
+  top: 0em;
+  left: 0;
+
+  flex-flow: column;
+  padding: 0.75em 0;
+  text-align: center;
+}
+
+.SM > .Calendar .Calendar-dateWk {
+  font-size: 0.8em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.SM > .Calendar .Calendar-dateMo {
+  font-size: 2.5em;
+  font-weight: 300;
+  line-height: 1;
+}
+
+/* -------------- */
+/* Breakpoint: LG  */
+/* -------------- */
+
+/* The LG breakpoint requires custom properties, so feature detect first */
+@supports (color: var(--custom)) {
+  .LG > .Calendar {
+    --Calendar-dateHeight: 4.5em;
+    --Calendar-entryHeight: 3.333em;
+
+    display: flex;
+    padding: 1.5em;
+  }
+
+  .LG > .Calendar .Calendar-times {
+    display: block;
+    margin-top: var(--Calendar-dateHeight);
+    min-width: 4em;
+  }
+
+  .LG > .Calendar .Calendar-time {
+    --Calendar-timeSize: 0.8;
+
+    border-top: 1px solid #eee;
+    font-size: calc(1em * var(--Calendar-timeSize));
+    height: calc(var(--Calendar-entryHeight) / var(--Calendar-timeSize));
+    list-style: none;
+    padding-top: 0.25em;
+  }
+
+  .LG > .Calendar .Calendar-day {
+    flex: 1 0 0%;
+    min-width: 0;
+
+    border: 0;
+    border-left: 1px solid #eee;
+    flex-flow: column;
+    padding: 0 1em;
+  }
+
+  .LG > .Calendar .Calendar-day:last-child {
+    padding-right: 0;
+  }
+
+  .LG > .Calendar .Calendar-dayHeader {
+    position: static;
+  }
+
+  .LG > .Calendar .Calendar-date {
+    padding: 0;
+    position: static;
+    text-align: left;
+    height: var(--Calendar-dateHeight);
+    overflow: hidden;
+  }
+
+  .LG > .Calendar .Calendar-entries {
+    position: relative;
+  }
+
+  .LG > .Calendar .Calendar-entry {
+    --Calendar-entryOffset: calc(9 * var(--Calendar-entryHeight));
+
+    height: calc(var(--Calender-entryDur) * var(--Calendar-entryHeight));
+    margin: 0;
+    position: absolute;
+    top: calc(var(--Calender-entryTime) * var(--Calendar-entryHeight) -
+      var(--Calendar-entryOffset));
+    width: 100%;
+  }
+
+  .LG > .Calendar .Calendar-entryDesc {
+    font-size: 0.8em;
+  }
+
+  .LiveCodeDemo {
+    margin-top: 0;
+  }
+
+  .LiveCodeDemo-spacer {
+    display: none;
+  }
+
+  .LiveCodeDemo-classAttr {
+    display: none;
+  }
+
+  /* -------------- */
+  /* Breakpoint: SM */
+  /* -------------- */
+
+  .SM > .LiveCodeDemo .LiveCodeDemo-spacer {
+    display: inline;
+  }
+
+  .SM > .LiveCodeDemo .LiveCodeDemo-classAttr {
+    background-color: hsla(60, 100%, 50%, 0.4);
+    display: inline;
+  }
+
+  .SM > .LiveCodeDemo .LiveCodeDemo-classAttrValue::after {
+    content: 'SM';
+  }
+
+  /* -------------- */
+  /* Breakpoint: MD */
+  /* -------------- */
+
+  .MD > .LiveCodeDemo .LiveCodeDemo-classAttrValue::after {
+    content: 'SM MD';
+  }
+
+  /* -------------- */
+  /* Breakpoint: LG */
+  /* -------------- */
+
+  .LG > .LiveCodeDemo .LiveCodeDemo-classAttrValue::after {
+    content: 'SM MD LG';
+  }
+
+  /* -------------- */
+  /* Breakpoint: XL */
+  /* -------------- */
+
+  .XL > .LiveCodeDemo .LiveCodeDemo-classAttrValue::after {
+    content: 'SM MD LG XL' }
+  }

@@ -14,16 +14,16 @@
   const siteDocsVersion = searchElement.getAttribute('data-bd-docs-version')
 
   window.docsearch({
-    apiKey: '3151f502c7b9e9dafd5e6372b691a24e',
+    apiKey: 'd57000e6b50c689556d6f0fd909d6359',
     indexName: 'bootstrap',
-    appId: 'AK7KMZKZHQ',
+    appId: 'V86L5VCMG9',
     container: searchElement,
     searchParameters: {
       facetFilters: [`version:${siteDocsVersion}`]
     },
     transformItems(items) {
       return items.map(item => {
-        const liveUrl = 'https://getbootstrap.com/'
+        const liveUrl = 'https://tovuti-bootstrap.vercel.app/'
 
         item.url = window.location.origin.startsWith(liveUrl) ?
           // On production, return the result as is

@@ -1,3 +1,7 @@
+body {
+  scrollbar-gutter: stable both-edges;
+}
+
 .bd-masthead {
   --bd-pink-rgb: #{to-rgb($pink)};
   padding: 3rem 0;

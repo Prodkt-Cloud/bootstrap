@@ -7,11 +7,26 @@
   pages:
     - title: Introduction
     - title: Browsers & devices
-    - title: JavaScript
+    # - title: JavaScript
     # - title: Vite
     - title: Accessibility
-    - title: RFS
+    # - title: RFS
     - title: RTL
+
+- title: Tovuti LMS
+  icon: tools
+  icon_color: orange
+  pages:
+    - title: Action Bar
+    - title: Empty States
+    - title: Brand
+
+- title: Lesson Activity
+  icon: tools
+  icon_color: purple
+  pages:
+    - title: (LX) Event in Lesson
+    - title: (AX) Event in Lesson
 
 - title: Customize
   icon: palette2
@@ -129,21 +144,8 @@
     - title: Vertical align
     - title: Visibility
 
-- title: Extend
-  icon: tools
-  icon_color: blue
-  pages:
-    - title: Approach
-    - title: Tovuti Theme
-    - title: Action Bar
-    - title: Empty States
-    - title: Event Activity
-    - title: Icons
-
 - title: About
   icon: globe2
   icon_color: indigo
   pages:
     - title: Translations
-
-- title: Migration

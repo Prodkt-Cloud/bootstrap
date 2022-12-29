@@ -28,6 +28,8 @@
 @import "../../../scss/variables";
 @import "../../../scss/mixins";
 
+
+
 // fusv-disable
 $enable-grid-classes: false; // stylelint-disable-line scss/dollar-variable-default
 $enable-cssgrid: true; // stylelint-disable-line scss/dollar-variable-default
@@ -47,13 +49,30 @@ $enable-cssgrid: true; // stylelint-disable-line scss/dollar-variable-default
 @import "toc";
 @import "footer";
 @import "component-examples";
-@import "buttons";
+// @import "buttons";
 @import "callouts";
 @import "brand";
 @import "colors";
 @import "clipboard-js";
 @import "placeholder-img";
 
+
+@import "theme/functions";
+@import "theme/utilities";
+
+@import "funk";
+
+@import "theme/rotate";
+// Load theme overrides
+@import "theme/variables";
+@import "theme/nav";
+@import "theme/type";
+@import "theme/buttons";
+@import "theme/card";
+@import "theme/forms";
+@import "theme/vendor/choicesjs";
+@import "buttons";
 // Load docs dependencies
 @import "syntax";
 @import "anchor";
+

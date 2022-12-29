@@ -1,0 +1,47 @@
+// // Utilities
+
+// $rotate-state: () !default;
+// $rotate-states: () !default;
+// // stylelint-disable-next-line scss/dollar-variable-default
+// $rotate-state: map-merge(
+//   (
+//     'rotate-state': (
+//       property: transform,
+//       css-var: true,
+//       class: rotate-state,
+//       values: (
+//         0: rotate(0deg),
+//         1: rotate(1deg),
+//         2: rotate(2deg),
+//         3: rotate(3deg),
+//         6: rotate(6deg),
+//         12: rotate(12deg),
+//         45: rotate(45deg),
+//         90: rotate(90deg),
+//         180: rotate(180deg),
+//       ),
+//     ),
+//     // scss-docs-end utils-visibility
+//   ),
+//   $rotate-states
+// );
+
+// $rotate-states: (
+//   0: rotate(0deg),
+//   1: rotate(1deg),
+//   2: rotate(2deg),
+//   3: rotate(3deg),
+//   6: rotate(6deg),
+//   12: rotate(12deg),
+//   45: rotate(45deg),
+//   90: rotate(90deg),
+//   180: rotate(180deg),
+//  ) !default;
+
+// @mixin rotate-states () {
+//   @each $name, $value in $rotate-states {
+//     .rotate-state-#{$name} {
+//       transform: #{$value};
+//     }
+//   }
+// }

@@ -1,0 +1,350 @@
+---
+layout: docs
+title: Brand
+description:
+group: extend
+toc: true
+aliases:
+  - "/docs/5.2/extend/"
+---
+
+
+
+## Brands
+
+<!-- markdownlint-disable -->
+{{< example >}}
+<div class="rounded-3 overflow-hidden" style="background-color: var(--bs-gray-200);">
+{{< tovuti/global/action-bar >}}
+<ul class="nav nav-tabs bg-white" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="essential-tab" data-bs-toggle="tab" data-bs-target="#essential-tab-pane"
+      type="button" role="tab" aria-controls="essential-tab-pane" aria-selected="true">Essentials</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button"
+      role="tab" aria-controls="profile-tab-pane" aria-selected="false">Profile</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button"
+      role="tab" aria-controls="contact-tab-pane" aria-selected="false">Contact</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#disabled-tab-pane" type="button"
+      role="tab" aria-controls="disabled-tab-pane" aria-selected="false" disabled>Disabled</button>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="essential-tab-pane" role="tabpanel" aria-labelledby="essential-tab"
+    tabindex="0">
+    <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
+    <div class="row p-3">
+      <div class="col-12 col-md-8 d-flex flex-column gap-3 XS SM MD LG XL">
+        <div class="card">
+          <div class="card-header bg-transparent border-bottom p-3">
+            <h4 class="card-title m-0">Details</h4>
+          </div>
+          <div class="card-body">
+            <div class="container">
+              <div class="row">
+                <div class="col-12 col-md-6">
+                  <div class="text-start">
+                    <label for="brandTitle" class="form-label">Brand name</label>
+                    <input type="title" class="form-control" id="brandTitle" aria-describedby="brandTitle"
+                      placeholder="Infor">
+                    <div id="brandTitle" class="form-text">This will be visible by all learners in the LMS.</div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <div class="text-start">
+                    <label for="brandDescription" class="form-label">Brand Description</label>
+                    <textarea class="form-control" id="brandDescription" rows="3"></textarea>
+                    <div id="brandDescription" class="form-text">This will be visible by all learners in the LMS.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="card-footer bg-transparent border-top">Footer</div> -->
+        </div>
+        <!-- -->
+        <div class="card">
+          <div class="card-header bg-transparent border-bottom p-3">
+            <h4 class="card-title m-0">Domains</h4>
+          </div>
+          <div class="card-body">
+            <!-- -->
+            <div class="alert alert-primary d-flex align-items-center" role="alert">
+              <i class="fa-light fa-globe me-3 fs-4"></i>
+              <div>
+                Add the following CNAME records to the DNS configuration for your domain. The procedure for adding CNAME
+                records depends on your DNS service Provider. <a href="">Learn More</a>
+              </div>
+              <span
+                class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
+            </div>
+            <!-- -->
+            <!-- -->
+            <div class="container">
+              <div class="row">
+                <div class="col-12 col-md-6">
+                  <div class="text-start">
+                    <label for="brandTitle" class="form-label">Domain<span
+                        class="badge rounded-pill text-bg-secondary ms-2">Secondary</span></label>
+                    <div class="input-group">
+                      <span class="input-group-text">https://</span>
+                      <input type="text" class="form-control" aria-label="" value="infor" disabled>
+                      <span class="input-group-text">.tovuti.io</span>
+                    </div>
+                    <div id="brandTitle" class="form-text">This how your Learners can access the LMS.</div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <div class="text-start">
+                    <label for="primaryLanguage" class="form-label">Default Language</label>
+                    <select class="form-control" data-trigger name="choices-single-default" id="choices-single-default"
+                      placeholder="This is a search placeholder">
+                      <option value="English">English</option>
+                      <option value="French">French</option>
+                      <option value="Spanish">Spanish</option>
+                      <option value="German">German</option>
+                      <option value="Japanese">Japanese</option>
+                      <option value="Portuguese">Portuguese</option>
+                      <option value="Hindi">Hindi</option>
+                      <option value="Chinese">Chinese</option>
+                      <option value="Arabic">Arabic</option>
+                      <option value="Italian">Italian</option>
+                    </select>
+                    <p class="form-text">This will be visible by all learners in the LMS.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="card-footer bg-transparent border-top">Footer</div> -->
+        </div>
+        <!-- -->
+      </div>
+      <div class="col-12 col-md-4 XS SM MD LG XL d-flex flex-column gap-3">
+        <!-- -->
+        <div class="card border-warning bg-warning bg-opacity-25">
+          <div class="card-header bg-transparent border-0 p-3 d-flex justify-content-between align-items-center">
+            <h4 class="card-title w-auto m-0">Publish</h4>
+            <div class="form-check form-switch w-auto">
+              <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+              <!-- <label class="form-check-label" for="flexSwitchCheckChecked">Publish</label> -->
+            </div>
+          </div>
+        </div>
+        <!-- -->
+        <div class="card">
+          <div class="card-header bg-transparent border-bottom p-3 d-flex justify-content-between align-items-center">
+            <h4 class="card-title w-auto m-0">Localization <span class="text-muted fw-light">(i18n)</span></h4>
+          </div>
+          <div class="card-body">
+            <label for="primaryLanguage" class="form-label">Default Language</label>
+            <select class="form-control" data-trigger name="choices-single-default" id="choices-single-default"
+              placeholder="This is a search placeholder">
+              <option value="English">English</option>
+              <option value="French">French</option>
+              <option value="Spanish">Spanish</option>
+              <option value="German">German</option>
+              <option value="Japanese">Japanese</option>
+              <option value="Portuguese">Portuguese</option>
+              <option value="Hindi">Hindi</option>
+              <option value="Chinese">Chinese</option>
+              <option value="Arabic">Arabic</option>
+              <option value="Italian">Italian</option>
+            </select>
+
+            <hr class="mx-n3 text-seconday text-black-50">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" id="learnerLanguageSelect" checked>
+              <label class="form-check-label" for="learnerLanguageSelect">Learner Language Selector</label>
+            </div>
+
+            <hr class="mx-n3 text-seconday text-black-50">
+            <label for="languageSelection" class="form-label">Supported Languages</label>
+            <select class="form-control" data-trigger name="choices-multiple-remove-button" id="choices-multiple-labels"
+              placeholder="This is a placeholder" multiple>
+              <option value="English" selected>English</option>
+              <option value="French" selected>French</option>
+              <option value="Spanish" selected>Spanish</option>
+              <option value="German" selected>German</option>
+              <option value="Japanese" selected>Japanese</option>
+              <option value="Portuguese" selected>Portuguese</option>
+              <option value="Hindi">Hindi</option>
+              <option value="Chinese">Chinese</option>
+              <option value="Arabic">Arabic</option>
+              <option value="Italian">Italian</option>
+            </select>
+          </div>
+        </div>
+        <!-- -->
+        <div class="card">
+          <div class="card-header bg-transparent border-bottom p-3 d-flex justify-content-between align-items-center">
+            <h4 class="card-title w-auto m-0">Payment Options</h4>
+          </div>
+          <div class="card-body">
+            <!-- START-->
+            <div class="row">
+              <div class="col-12 d-flex flex-column">
+                <label for="defaultGateway" class="form-label">Payment Gateways</label>
+                <select multiple class="form-control" data-trigger name="choices-single-default"
+                  id="choices-single-default">
+                  <option value="Plutio Gateway" selected>Plutio Gateway</option>
+                  <option value="Hubspot Gateway" selected>Hubspot Gateway</option>
+                  <option value="Wize Gateway" selected>Wize Gateway</option>
+                  <option value="Paypal Gateway" selected>Paypal Gateway</option>
+                </select>
+              </div>
+              <div class="col-12 d-flex flex-column p-2">
+              </div>
+              <div class="col-12 d-flex flex-column">
+                <label for="defaultGateway" class="form-label">Default Payment Gateway</label>
+                <select class="form-control" data-trigger name="choices-single-default" id="choices-single-default">
+                  <option value="Plutio Gateway">Plutio Gateway</option>
+                  <option value="Hubspot Gateway">Hubspot Gateway</option>
+                  <option value="Wize Gateway" selected>Wize Gateway</option>
+                  <option value="Paypal Gateway">Paypal Gateway</option>
+                </select>
+              </div>
+              <!-- END-->
+            </div>
+            <hr class="mx-n3 text-seconday text-black-50">
+            <h5 class="card-title w-auto m-0">Exclude Payment Option</h5>
+            <p class="form-text">Disable Payment Gateways For Some Users</p>
+            <div class="row">
+              <div class="col-12 d-flex flex-column gap-0">
+                <label for="Disable gateway" class="form-label">Payment Option to exclude</label>
+                <select class="form-control" data-trigger name="choices-single-default" id="choices-single-default">
+                  <option value="Plutio Gateway">Plutio Gateway</option>
+                  <option value="Hubspot Gateway">Hubspot Gateway</option>
+                  <option value="Wize Gateway" selected>Wize Gateway</option>
+                  <option value="Paypal Gateway">Paypal Gateway</option>
+                </select>
+              </div>
+              <div class="col-12 d-flex flex-column p-2">
+              </div>
+              <div class="col-12 d-flex flex-column">
+                <p class="form-label">Fallback Default Payment Gateway</p>
+                <select class="form-control" data-trigger name="choices-single-default" id="choices-single-default">
+                  <option value="Plutio Gateway">Plutio Gateway</option>
+                  <option value="Hubspot Gateway">Hubspot Gateway</option>
+                  <option value="Wize Gateway" selected>Wize Gateway</option>
+                  <option value="Paypal Gateway" selected>Paypal Gateway</option>
+                </select>
+              </div>
+              <div class="col-12 d-flex flex-column p-2">
+              </div>
+              <div class="col-12">
+                <label for="languageSelection" class="form-label">User groups to exclude</label>
+                <select class="form-control" data-trigger name="choices-multiple-remove-button"
+                  id="choices-multiple-labels" placeholder="This is a placeholder" multiple>
+                  <option value="90-day Probation" selected>90-day Probation</option>
+                  <option value="Banned with Access to Purchases" selected>Banned with Access to Purchases</option>
+                  <option value="Developer Testing" selected>Developer Testing</option>
+                </select>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!-- -->
+        <div class="card">
+          <div class="card-header bg-transparent border-bottom p-3 d-flex justify-content-between align-items-center">
+            <h4 class="card-title w-auto m-0">Email</h4>
+          </div>
+          <div class="card-body">
+            This is some text within a card body.
+          </div>
+        </div>
+        <!-- -->
+        <div class="card">
+          <div class="card-header bg-transparent border-bottom p-3 d-flex justify-content-between align-items-center">
+            <h4 class="card-title w-auto m-0">Integrations</h4>
+          </div>
+          <div class="card-body">
+            This is some text within a card body.
+          </div>
+        </div>
+        <!-- -->
+      </div>
+    </div>
+
+  </div>
+  <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">...</div>
+  <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">...</div>
+  <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">...
+  </div>
+</div>
+</div>
+
+  <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var genericExamples = document.querySelectorAll('[data-trigger]');
+        for (i = 0; i < genericExamples.length; ++i) {
+          var element = genericExamples[i];
+          new Choices(element, {
+            allowHTML: true,
+          removeItemButton: true,
+    shouldSort: true,
+            placeholderValue: 'Select languages you support',
+            searchPlaceholderValue: 'Search for a language',
+    noResultsText: 'No results found',
+    itemSelectText: 'Press to add',
+    searchEnabled: true,
+    searchChoices: true,
+    searchFloor: 1,
+          });
+        }
+
+        /* Use label on event */
+        var choicesSelect = new Choices('#choices-multiple-labels', {
+          allowHTML: true,
+          removeItemButton: true,
+          // choices: [
+          //   { value: 'One', label: 'Label One' },
+          //   { value: 'Two', label: 'Label Two', disabled: true },
+          //   { value: 'Three', label: 'Label Three' },
+          // ],
+        })
+        .setChoices(
+        //   [
+        //     { value: 'Four', label: 'Label Four', disabled: true },
+        //     { value: 'Five', label: 'Label Five' },
+        //     { value: 'Six', label: 'Label Six', selected: true },
+        //   ],
+          'value',
+          'label',
+          false
+        );
+
+        choicesSelect.passedElement.element.addEventListener(
+          'addItem',
+          function(event) {
+            document.getElementById('message').innerHTML =
+              'You just added "' + event.detail.label + '"';
+          }
+        );
+
+        choicesSelect.passedElement.element.addEventListener(
+          'removeItem',
+          function(event) {
+            document.getElementById('message').innerHTML =
+              'You just removed "' + event.detail.label + '"';
+          }
+        );
+
+        var resetSimple = new Choices(document.getElementById('reset-simple'), {
+          allowHTML: true,
+        });
+
+        var resetMultiple = new Choices('#reset-multiple', {
+          allowHTML: true,
+          removeItemButton: true,
+        });
+      });
+    </script>
+{{< /example >}}
+<!-- markdownlint-restore -->

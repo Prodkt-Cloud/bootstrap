@@ -4,36 +4,36 @@
 
 .bd-example-snippet {
   border: solid $border-color;
-  border-width: 1px 0;
+  border-width: 0px 0;
+  // background-color: $gray-100;
 
   @include media-breakpoint-up(md) {
-    border-width: 1px;
+    border-width: 0px;
   }
 }
 
 .bd-example {
-  --bd-example-padding: 1rem;
+  --bd-example-padding: 0;
 
   position: relative;
   padding: var(--bd-example-padding);
-  margin: 0 ($bd-gutter-x * -.5);
-  border: solid $border-color;
-  border-width: 1px 0;
+  margin: 0 ($bd-gutter-x * 1.5);
+  outline: 0px solid $gray-400;
+  outline-offset: 0px;
   @include clearfix();
 
   @include media-breakpoint-up(md) {
-    --bd-example-padding: 1.5rem;
+    --bd-example-padding: 0;
 
     margin-right: 0;
     margin-left: 0;
-    border-width: 1px;
-    @include border-top-radius(var(--bs-border-radius));
+    @include border-radius(var(--bs-border-radius));
   }
 
   + .bd-code-snippet {
-    @include border-top-radius(0);
+    @include border-radius(var(--bs-border-radius));
     border: solid $border-color;
-    border-width: 0 1px 1px;
+    border-width: 0 0px 0px;
   }
 
   + p {
@@ -139,7 +139,7 @@
 
 // Grid mixins
 .example-container {
-  width: 800px;
+  width: 100%;
   @include make-container();
 }
 
@@ -308,7 +308,8 @@
 
 .highlight {
   position: relative;
-  padding: .75rem ($bd-gutter-x * .5);
+  // padding: .75rem ($bd-gutter-x * .5);
+  padding:0;
   margin-bottom: 1rem;
   background-color: var(--bs-gray-100);
 
@@ -320,8 +321,10 @@
   pre {
     padding: 0;
     margin-top: .625rem;
-    margin-right: 1.875rem;
-    margin-bottom: .625rem;
+    // margin-right: 1.875rem;
+    margin-right: 0rem;
+    // margin-bottom: .625rem;
+    margin-bottom: 0rem;
     white-space: pre;
     background-color: transparent;
     border: 0;
@@ -355,5 +358,5 @@
 
 .highlight-toolbar {
   border: solid $border-color;
-  border-width: 1px 0;
+  border-width: 0px 0;
 }

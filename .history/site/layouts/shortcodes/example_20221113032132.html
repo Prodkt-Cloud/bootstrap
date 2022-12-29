@@ -1,0 +1,118 @@
+{{- /*
+  Usage: `example args`
+
+  `args` are all optional and can be one of the following:
+    * id: the `div`'s id - default: ""
+    * class: any extra class(es) to be added to the `div` - default: ""
+    * lang: language used to display the code - default: "html"
+    * show_markup: if the markup should be output in the HTML - default: `true`
+    * show_preview: if the preview should be output in the HTML - default: `true`
+    * stackblitz_add_js: if extra JS snippet should be added to StackBlitz - default: `false`
+*/ -}}
+
+{{- $id := .Get "id" -}}
+{{- $class := .Get "class" -}}
+{{- $lang := .Get "lang" | default "html" -}}
+{{- $stackblitz_add_js := .Get "stackblitz_add_js" | default false -}}
+{{- $show_markup := .Get "show_markup" | default true -}}
+{{- $show_preview := .Get "show_preview" | default true -}}
+{{- $input := .Inner -}}
+{{- $content := .Inner -}}
+
+
+<style>
+.MyComponent {
+  /* Base styles that work on any screen size */
+}
+
+.MD > .MyComponent {
+  /* Overrides that apply for medium container sizes */
+}
+
+.LG > .MyComponent {
+  /* Overrides that apply for large container sizes */
+}
+
+@supports not (container-type: inline-size) {
+  .bd-example-snippet {
+  container: inline-size;
+  container-name: test;
+    visibility: hidden;
+  }
+}
+
+  .bd-example {
+  container: inline-size;
+  container-name: test;
+  /* border: 1px solid red !important; */
+  flex: 1;
+  flex-wrap: wrap;
+  overflow: hidden;
+  min-width: 375px;
+  max-width:100%;
+  }
+
+  @container test (min-width: 375px) {
+    .bd-example {
+      min-width: 375px;
+    }
+  body {
+  }
+  }
+</style>
+<div class="p-3 bd-example-snippet bd-code-snippet">
+  {{- if eq $show_preview true -}}
+  <div{{ with $id }} id="{{ . }}"{{ end }} class="XS SM MD LG XL tov-test resizable p-0 m-0 h-auto bd-example{{ with $class }} {{ . }}{{ end }}" data-observe-resizes>
+
+    {{- $input -}}
+</div>
+{{- end -}}
+
+  {{- if eq $show_markup true -}}
+    {{- if eq $show_preview true -}}
+      <div class="d-flex align-items-center w-100 highlight-toolbar py-1">
+        <small class="font-monospace text-muted text-uppercase">{{- $lang -}}</small>
+        <div class="d-flex ms-auto gap-1">
+          <button type="button" class="btn-edit text-nowrap"{{ with $stackblitz_add_js }} data-sb-js-snippet="{{ $stackblitz_add_js }}"{{ end }} title="Try it on StackBlitz">
+            <svg class="bi" role="img" aria-label="Try it"><use xlink:href="#lightning-charge-fill"/></svg>
+          </button>
+          <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
+            <svg class="bi" role="img" aria-label="Copy"><use xlink:href="#clipboard"/></svg>
+          </button>
+        </div>
+      </div>
+
+    {{- end -}}
+
+
+    {{- $content = replaceRE `<svg class="bd-placeholder-img(?:-lg)?(?: *?bd-placeholder-img-lg)? ?(.*?)".*?<\/svg>` `<img src="..." class="$1" alt="...">` $content -}}
+    {{- $content = replaceRE `<img class="bd-placeholder-img(?:-lg)?(?: *?bd-placeholder-img-lg)? ?(.*?)".*?>` `<img src="..." class="$1" alt="...">` $content -}}
+    {{- $content = replaceRE ` (class=" *?")` "" $content -}}
+    {{- highlight (trim $content "\n") $lang "" -}}
+  {{- end -}}
+  <script>
+    if ('ResizeObserver' in self) {
+      var ro = new ResizeObserver(function(entries) {
+        var defaultBreakpoints = {XS: 0, SM: 576, MD: 768, LG: 992, XL: 1200};
+
+        entries.forEach(function(entry) {
+          var breakpoints = entry.target.dataset.breakpoints ?
+              JSON.parse(entry.target.dataset.breakpoints) :
+              defaultBreakpoints;
+          Object.keys(breakpoints).forEach(function(breakpoint) {
+            var minWidth = breakpoints[breakpoint];
+            if (entry.contentRect.width >= minWidth) {
+              entry.target.classList.add(breakpoint);
+            } else {
+              entry.target.classList.remove(breakpoint);
+            }
+          });
+        });
+      });
+      var elements = document.querySelectorAll('[data-observe-resizes]');
+      for (var element, i = 0; element = elements[i]; i++) {
+        ro.observe(element);
+      }
+    }
+  </script>
+</div>

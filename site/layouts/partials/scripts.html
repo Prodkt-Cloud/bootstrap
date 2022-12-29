@@ -8,18 +8,28 @@
 {{ if eq .Page.Layout "docs" -}}
 <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
 <script src="https://cdn.jsdelivr.net/npm/@stackblitz/sdk@1/bundles/sdk.umd.js"></script>
+
 {{- end }}
 
+{{- $funk := resources.Match "js/funk/*.js" -}}
 {{- $vendor := resources.Match "js/vendor/*.js" -}}
 {{- $js := resources.Match "js/*.js" -}}
+{{- $css := resources.Match "js/*.css" -}}
 {{- $targetDocsJSPath := path.Join "/docs" .Site.Params.docs_version "assets/js/docs.js" -}}
+{{- $targetFunkJSPath := path.Join "/docs" .Site.Params.docs_version "assets/js/funk.js" -}}
 {{- $docsJs := append $js $vendor | resources.Concat $targetDocsJSPath -}}
+{{- $funkJs := append $js $funk | resources.Concat $targetFunkJSPath -}}
 
 {{- if eq hugo.Environment "production" -}}
   {{- $docsJs = $docsJs | resources.Minify -}}
 {{- end }}
 
+{{- if eq hugo.Environment "production" -}}
+  {{- $funkJs = $funkJs | resources.Minify -}}
+{{- end }}
+
 <script src="{{ $docsJs.Permalink | relURL }}"></script>
+<script src="{{ $funkJs.Permalink | relURL }}"></script>
 
 {{ if eq .Page.Layout "docs" -}}
 <script>
@@ -72,13 +82,71 @@ ${htmlSnippet.replace(/^/gm, '    ')}
   }
 </script>
 
+<script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
 <script defer src="https://cdn.usefathom.com/script.js" data-site="ITUSEYJG"></script>
 <script src="https://kit.fontawesome.com/8c1112f2d0.js" crossorigin="anonymous"></script>
-<!-- <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.3.913/styles/kendo.bootstrap-main.min.css" /> -->
-<!-- <link href="https://kendo.cdn.telerik.com/2022.3.913/styles/kendo.common.min.css" rel="stylesheet" />
-<link href="https://kendo.cdn.telerik.com/2022.3.913/styles/kendo.default-main.min.css" rel="stylesheet" /> -->
-<!-- <script src="https://kendo.cdn.telerik.com/2022.3.913/js/kendo.all.min.js"></script> -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+<!-- plugin js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.js"></script>
+<!-- init js -->
+
+<script>
+  interact('.resizable')
+  .resizable({
+    edges: { top: false, left: false, bottom: false, right: true },
+    listeners: {
+      move: function (event) {
+        let { x, y } = event.target.dataset
+
+        x = (parseFloat(x) || 0) + event.deltaRect.left
+        y = (parseFloat(y) || 0) + event.deltaRect.top
+
+        Object.assign(event.target.style, {
+          width: `${event.rect.width}px`,
+          height: `${event.rect.height}px`,
+          transform: `translate(${x}px, ${y}px)`
+        })
+
+        Object.assign(event.target.dataset, { x, y })
+
+      }
+    }
+  });
+
+  interact('.dragTovAxSideNav')
+  .resizable({
+    edges: { top: false, left: false, bottom: false, right: true },
+
+    listeners: {
+      move: function (event) {
+        let { x, y } = event.target.dataset
+
+        x = (parseFloat(x) || 0) + event.deltaRect.left
+        y = (parseFloat(y) || 0) + event.deltaRect.top
+
+        Object.assign(event.target.style, {
+          width: `${event.rect.width}px`,
+          height: `${event.rect.height}px`,
+          transform: `translate(${x}px, ${y}px)`
+        })
+
+        Object.assign(event.target.dataset, { x, y })
+      },
+
+
+
+  modifiers: [
+
+    interact.modifiers.restrict({
+      restriction: '.dragTovAxSideNavWrapper'
+    }),
+  ],
+
+    }
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/container-query-polyfill@1/dist/container-query-polyfill.modern.js"></script>
+<script defer src="https://unpkg.com/alpinejs@3.10.5/dist/cdn.min.js"></script>`
 {{- end }}
