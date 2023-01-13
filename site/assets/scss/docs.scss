@@ -56,3 +56,5 @@ $enable-cssgrid: true; // stylelint-disable-line scss/dollar-variable-default
 // Load docs dependencies
 @import "syntax";
 @import "anchor";
+
+@import "custom/codeblock";

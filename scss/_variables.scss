@@ -46,6 +46,9 @@ $yellow:  #ffc107 !default;
 $green:   #198754 !default;
 $teal:    #20c997 !default;
 $cyan:    #0dcaf0 !default;
+$cta:     #007287 !default;
+$tov-blue: #1e2935 !default;
+$tov-light-blue: #374151 !default;
 // scss-docs-end color-variables
 
 // scss-docs-start colors-map
@@ -176,6 +179,36 @@ $cyan-700: shade-color($cyan, 40%) !default;
 $cyan-800: shade-color($cyan, 60%) !default;
 $cyan-900: shade-color($cyan, 80%) !default;
 
+$cta-100: tint-color($cta, 80%) !default;
+$cta-200: tint-color($cta, 60%) !default;
+$cta-300: tint-color($cta, 40%) !default;
+$cta-400: tint-color($cta, 20%) !default;
+$cta-500: $cta !default;
+$cta-600: shade-color($cta, 20%) !default;
+$cta-700: shade-color($cta, 40%) !default;
+$cta-800: shade-color($cta, 60%) !default;
+$cta-900: shade-color($cta, 80%) !default;
+
+$tov-blue-100: tint-color($tov-blue, 80%) !default;
+$tov-blue-200: tint-color($tov-blue, 60%) !default;
+$tov-blue-300: tint-color($tov-blue, 40%) !default;
+$tov-blue-400: tint-color($tov-blue, 20%) !default;
+$tov-blue-500: $tov-blue !default;
+$tov-blue-600: shade-color($tov-blue, 20%) !default;
+$tov-blue-700: shade-color($tov-blue, 40%) !default;
+$tov-blue-800: shade-color($tov-blue, 60%) !default;
+$tov-blue-900: shade-color($tov-blue, 80%) !default;
+
+$tov-light-blue-100: tint-color($tov-light-blue, 80%) !default;
+$tov-light-blue-200: tint-color($tov-light-blue, 60%) !default;
+$tov-light-blue-300: tint-color($tov-light-blue, 40%) !default;
+$tov-light-blue-400: tint-color($tov-light-blue, 20%) !default;
+$tov-light-blue-500: $tov-light-blue !default;
+$tov-light-blue-600: shade-color($tov-light-blue, 20%) !default;
+$tov-light-blue-700: shade-color($tov-light-blue, 40%) !default;
+$tov-light-blue-800: shade-color($tov-light-blue, 60%) !default;
+$tov-light-blue-900: shade-color($tov-light-blue, 80%) !default;
+
 $blues: (
   "blue-100": $blue-100,
   "blue-200": $blue-200,
@@ -295,6 +328,45 @@ $cyans: (
   "cyan-800": $cyan-800,
   "cyan-900": $cyan-900
 ) !default;
+
+
+$tov-blues: (
+  "tov-blue-100": $tov-blue-100,
+  "tov-blue-200": $tov-blue-200,
+  "tov-blue-300": $tov-blue-300,
+  "tov-blue-400": $tov-blue-400,
+  "tov-blue-500": $tov-blue-500,
+  "tov-blue-600": $tov-blue-600,
+  "tov-blue-700": $tov-blue-700,
+  "tov-blue-800": $tov-blue-800,
+  "tov-blue-900": $tov-blue-900
+) !default;
+
+$tov-light-blues: (
+  "tov-light-blue-100": $tov-light-blue-100,
+  "tov-light-blue-200": $tov-light-blue-200,
+  "tov-light-blue-300": $tov-light-blue-300,
+  "tov-light-blue-400": $tov-light-blue-400,
+  "tov-light-blue-500": $tov-light-blue-500,
+  "tov-light-blue-600": $tov-light-blue-600,
+  "tov-light-blue-700": $tov-light-blue-700,
+  "tov-light-blue-800": $tov-light-blue-800,
+  "tov-light-blue-900": $tov-light-blue-900
+) !default;
+
+$ctas: (
+  "cta-100": $cta-100,
+  "cta-200": $cta-200,
+  "cta-300": $cta-300,
+  "cta-400": $cta-400,
+  "cta-500": $cta-500,
+  "cta-600": $cta-600,
+  "cta-700": $cta-700,
+  "cta-800": $cta-800,
+  "cta-900": $cta-900
+) !default;
+
+
 // fusv-enable
 
 // scss-docs-start theme-color-variables
@@ -306,6 +378,9 @@ $warning:       $yellow !default;
 $danger:        $red !default;
 $light:         $gray-100 !default;
 $dark:          $gray-900 !default;
+$cta:          $cta !default;
+$tov-dark:    $tov-blue !default;
+$tov-light:   $tov-light-blue !default;
 // scss-docs-end theme-color-variables
 
 // scss-docs-start theme-colors-map
@@ -317,7 +392,10 @@ $theme-colors: (
   "warning":    $warning,
   "danger":     $danger,
   "light":      $light,
-  "dark":       $dark
+  "dark":       $dark,
+  "cta":        $cta,
+  "brand":      $tov-dark,
+  "brand-light": $tov-light
 ) !default;
 // scss-docs-end theme-colors-map
 
@@ -374,7 +452,7 @@ $enable-cssgrid:              false !default;
 $enable-button-pointers:      true !default;
 $enable-rfs:                  true !default;
 $enable-validation-icons:     true !default;
-$enable-negative-margins:     false !default;
+$enable-negative-margins:     true !default;
 $enable-deprecation-messages: true !default;
 $enable-important-utilities:  true !default;
 
@@ -579,9 +657,8 @@ $aspect-ratios: (
 
 // scss-docs-start font-variables
 // stylelint-disable value-keyword-case
-$font-family-sans-serif:      system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
-$font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
-// stylelint-enable value-keyword-case
+$font-family-sans-serif:      'Inter', system-ui, -apple-system, "Segoe UI", "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$font-family-monospace:       'JetBrains Mono', Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;// stylelint-enable value-keyword-case
 $font-family-base:            var(--#{$prefix}font-sans-serif) !default;
 $font-family-code:            var(--#{$prefix}font-monospace) !default;
 
@@ -627,9 +704,9 @@ $font-sizes: (
 
 // scss-docs-start headings-variables
 $headings-margin-bottom:      $spacer * .5 !default;
-$headings-font-family:        null !default;
+$headings-font-family:        'Inter Tight', sans-serif !default;
 $headings-font-style:         null !default;
-$headings-font-weight:        500 !default;
+$headings-font-weight:        700 !default;
 $headings-line-height:        1.2 !default;
 $headings-color:              null !default;
 // scss-docs-end headings-variables

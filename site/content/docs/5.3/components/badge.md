@@ -87,6 +87,125 @@ Use the `.rounded-pill` utility class to make badges more rounded with a larger 
 <span class="badge rounded-pill text-bg-{{ .name }}">{{ .name | title }}</span>{{- end -}}
 {{< /badge.inline >}}
 {{< /example >}}
+## Custom Beta Badges
+
+Use the `.rounded-pill` utility class to make badges more rounded with a larger `border-radius`.
+
+
+
+{{< example >}}
+{{< badge.inline >}}
+
+
+<alert class="alert alert-warning small w-100 mx-auto text-center"><code>.dark </code>classes do not need to be applied when a color mode is set. You only need to apply these inside Tovuti 2.0 if you plan to use them on dark palettes.</alert>
+
+{{- range (index $.Site.Data "theme-colors") }}
+<span class="badge-{{ .name }}-light rounded-pill">{{ .name | title }}</span>{{- end -}}
+{{< /badge.inline >}}
+
+<div class="bg-brand-light rounded-4 text-light p-4 mt-4 d-flex justify-content-center flex-wrap" data-bs-theme="dark">
+<p class="my-4 w-100 text-center"><code>.dark</code> class applied</p>
+<hr class="text-light w-100" />
+<div class="w-100 d-flex flex-wrap gap-3 justify-content-center gap-2">
+{{< badge.inline >}}
+{{- range (index $.Site.Data "theme-colors") }}
+<span class="badge-{{ .name }}-light dark rounded-pill">{{ .name | title }}</span>{{- end -}}
+{{< /badge.inline >}}</div></div>
+
+<p class="my-4 w-100 text-center"><code>.badge-lg</code> class applied</p>
+<div class="w-75 d-flex flex-wrap gap-3 justify-content-center gap-2">
+{{< badge.inline >}}
+{{- range (index $.Site.Data "theme-colors") }}
+<span class="badge-{{ .name }}-light badge-lg rounded-pill">{{ .name | title }}</span>{{- end -}}
+{{< /badge.inline >}}</div>
+
+<div class="bg-brand-light rounded-4 text-light p-4 mt-4 d-flex justify-content-center flex-wrap" data-bs-theme="dark">
+<p class="my-4 w-100 text-center"><code>.badge-lg</code> + <code>.dark</code> class applied</p>
+<hr class="text-light w-100" />
+<div class="w-75 d-flex flex-wrap gap-3 justify-content-center gap-2">
+{{< badge.inline >}}
+{{- range (index $.Site.Data "theme-colors") }}
+<span class="badge-{{ .name }}-light dark badge-lg rounded-pill">{{ .name | title }}</span>{{- end -}}
+{{< /badge.inline >}}</div></div>
+{{< /example >}}
+
+
+
+
+{{< example >}}
+{{< badge.inline >}}
+
+
+<alert class="alert alert-warning small w-100 mx-auto text-center"><code>.dark </code>classes do not need to be applied when a color mode is set. You only need to apply these inside Tovuti 2.0 if you plan to use them on dark palettes.</alert>
+
+{{- range (index $.Site.Data "theme-colors") }}
+<span class="badge-{{ .name }}-light-gradient rounded-pill">{{ .name | title }}</span>{{- end -}}
+{{< /badge.inline >}}
+
+<div class="bg-brand-light rounded-4 text-light p-4 mt-4 d-flex justify-content-center flex-wrap" data-bs-theme="dark">
+<p class="my-4 w-100 text-center"><code>.dark</code> class applied</p>
+<hr class="text-light w-100" />
+<div class="w-100 d-flex flex-wrap gap-3 justify-content-center gap-2">
+{{< badge.inline >}}
+{{- range (index $.Site.Data "theme-colors") }}
+<span class="badge-{{ .name }}-light-gradient dark rounded-pill">{{ .name | title }}</span>{{- end -}}
+{{< /badge.inline >}}</div></div>
+
+<p class="my-4 w-100 text-center"><code>.badge-lg</code> class applied</p>
+<div class="w-75 d-flex flex-wrap gap-3 justify-content-center gap-2">
+{{< badge.inline >}}
+{{- range (index $.Site.Data "theme-colors") }}
+<span class="badge-{{ .name }}-light-gradient badge-lg rounded-pill">{{ .name | title }}</span>{{- end -}}
+{{< /badge.inline >}}</div>
+
+<div class="bg-brand-light rounded-4 text-light p-4 mt-4 d-flex justify-content-center flex-wrap" data-bs-theme="dark">
+<p class="my-4 w-100 text-center"><code>.badge-lg</code> + <code>.dark</code> class applied</p>
+<hr class="text-light w-100" />
+<div class="w-75 d-flex flex-wrap gap-3 justify-content-center gap-2">
+{{< badge.inline >}}
+{{- range (index $.Site.Data "theme-colors") }}
+<span class="badge-{{ .name }}-light-gradient dark badge-lg rounded-pill">{{ .name | title }}</span>{{- end -}}
+{{< /badge.inline >}}</div></div>
+{{< /example >}}
+
+
+
+
+{{< example >}}
+{{< badge.inline >}}
+
+
+<alert class="alert alert-warning small w-100 mx-auto text-center"><code>.dark </code>classes do not need to be applied when a color mode is set. You only need to apply these inside Tovuti 2.0 if you plan to use them on dark palettes.</alert>
+
+{{- range (index $.Site.Data "theme-colors") }}
+<span class="badge-outline-gradient-{{ .name }} rounded-pill">{{ .name | title }}</span>{{- end -}}
+{{< /badge.inline >}}
+
+<div class="bg-brand-light rounded-4 text-light p-4 mt-4 d-flex justify-content-center flex-wrap" data-bs-theme="dark">
+<p class="my-4 w-100 text-center"><code>.dark</code> class applied</p>
+<hr class="text-light w-100" />
+<div class="w-100 d-flex flex-wrap gap-3 justify-content-center gap-2">
+{{< badge.inline >}}
+{{- range (index $.Site.Data "theme-colors") }}
+<span class="badge-outline-gradient-{{ .name }} dark rounded-pill">{{ .name | title }}</span>{{- end -}}
+{{< /badge.inline >}}</div></div>
+
+<p class="my-4 w-100 text-center"><code>.badge-lg</code> class applied</p>
+<div class="w-75 d-flex flex-wrap gap-3 justify-content-center gap-2">
+{{< badge.inline >}}
+{{- range (index $.Site.Data "theme-colors") }}
+<span class="badge-outline-gradient-{{ .name }} badge-lg rounded-pill">{{ .name | title }}</span>{{- end -}}
+{{< /badge.inline >}}</div>
+
+<div class="bg-brand-light rounded-4 text-light p-4 mt-4 d-flex justify-content-center flex-wrap" data-bs-theme="dark">
+<p class="my-4 w-100 text-center"><code>.badge-lg</code> + <code>.dark</code> class applied</p>
+<hr class="text-light w-100" />
+<div class="w-75 d-flex flex-wrap gap-3 justify-content-center gap-2">
+{{< badge.inline >}}
+{{- range (index $.Site.Data "theme-colors") }}
+<span class="badge-outline-gradient-{{ .name }} dark badge-lg rounded-pill">{{ .name | title }}</span>{{- end -}}
+{{< /badge.inline >}}</div></div>
+{{< /example >}}
 
 ## CSS
 

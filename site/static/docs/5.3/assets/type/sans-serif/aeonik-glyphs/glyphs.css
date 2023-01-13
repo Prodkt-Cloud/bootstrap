@@ -1,0 +1,15 @@
+@font-face {
+font-family: 'Aeonik_OVERVIEW-Medium';
+  src: url('Aeonik_OVERVIEW-Medium.eot'); /* IE9 Compat Modes */
+  src: url('Aeonik_OVERVIEW-Medium.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('Aeonik_OVERVIEW-Medium.woff2') format('woff2'), /* Super Modern Browsers */
+       url('Aeonik_OVERVIEW-Medium.woff') format('woff'); /* Pretty Modern Browsers */
+}
+
+@font-face {
+  font-family: 'Aeonik_OVERVIEW-Regular';
+  src: url('Aeonik_OVERVIEW-Regular.eot'); /* IE9 Compat Modes */
+  src: url('Aeonik_OVERVIEW-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('Aeonik_OVERVIEW-Regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('Aeonik_OVERVIEW-Regular.woff') format('woff'); /* Pretty Modern Browsers */
+}
