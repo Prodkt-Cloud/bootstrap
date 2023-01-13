@@ -123,6 +123,7 @@
   "ignorePaths": [
     ".cspell.json",
     "dist/",
+    "prodkt/",
     "*.min.*",
     "**/*rtl*",
     "**/tests/**"
