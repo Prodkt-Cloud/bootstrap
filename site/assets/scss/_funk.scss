@@ -376,3 +376,12 @@ responsive-container.C4::before {
     display: flex;
   }
 }
+
+
+.text-transparent {
+  color: transparent;
+}
+.bg-clip-text {
+  -webkit-background-clip: text;
+  background-clip: text;
+}
