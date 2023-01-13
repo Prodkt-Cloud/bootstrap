@@ -13,6 +13,7 @@ Badges scale to match the size of the immediate parent element by using relative
 ### Headings
 
 {{< example >}}
+
 <h1>Example heading <span class="badge bg-secondary">New</span></h1>
 <h2>Example heading <span class="badge bg-secondary">New</span></h2>
 <h3>Example heading <span class="badge bg-secondary">New</span></h3>
@@ -27,7 +28,7 @@ Badges can be used as part of links or buttons to provide a counter.
 
 {{< example >}}
 <button type="button" class="btn btn-primary">
-  Notifications <span class="badge text-bg-secondary">4</span>
+Notifications <span class="badge text-bg-secondary">4</span>
 </button>
 {{< /example >}}
 
@@ -41,11 +42,11 @@ Use utilities to modify a `.badge` and position it in the corner of a link or bu
 
 {{< example >}}
 <button type="button" class="btn btn-primary position-relative">
-  Inbox
-  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-    99+
-    <span class="visually-hidden">unread messages</span>
-  </span>
+Inbox
+<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+99+
+<span class="visually-hidden">unread messages</span>
+</span>
 </button>
 {{< /example >}}
 
@@ -53,10 +54,10 @@ You can also replace the `.badge` class with a few more utilities without a coun
 
 {{< example >}}
 <button type="button" class="btn btn-primary position-relative">
-  Profile
-  <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
-    <span class="visually-hidden">New alerts</span>
-  </span>
+Profile
+<span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
+<span class="visually-hidden">New alerts</span>
+</span>
 </button>
 {{< /example >}}
 
@@ -87,17 +88,15 @@ Use the `.rounded-pill` utility class to make badges more rounded with a larger 
 <span class="badge rounded-pill text-bg-{{ .name }}">{{ .name | title }}</span>{{- end -}}
 {{< /badge.inline >}}
 {{< /example >}}
+
 ## Custom Beta Badges
 
 Use the `.rounded-pill` utility class to make badges more rounded with a larger `border-radius`.
 
-
-
 {{< example >}}
 {{< badge.inline >}}
 
-
-<alert class="alert alert-warning small w-100 mx-auto text-center"><code>.dark </code>classes do not need to be applied when a color mode is set. You only need to apply these inside Tovuti 2.0 if you plan to use them on dark palettes.</alert>
+<div class="alert alert-warning small w-100 mx-auto text-center"><code>.dark </code>classes do not need to be applied when a color mode is set. You only need to apply these inside Tovuti 2.0 if you plan to use them on dark palettes.</div>
 
 {{- range (index $.Site.Data "theme-colors") }}
 <span class="badge-{{ .name }}-light rounded-pill">{{ .name | title }}</span>{{- end -}}
@@ -105,7 +104,6 @@ Use the `.rounded-pill` utility class to make badges more rounded with a larger 
 
 <div class="bg-brand-light rounded-4 text-light p-4 mt-4 d-flex justify-content-center flex-wrap" data-bs-theme="dark">
 <p class="my-4 w-100 text-center"><code>.dark</code> class applied</p>
-<hr class="text-light w-100" />
 <div class="w-100 d-flex flex-wrap gap-3 justify-content-center gap-2">
 {{< badge.inline >}}
 {{- range (index $.Site.Data "theme-colors") }}
@@ -129,14 +127,10 @@ Use the `.rounded-pill` utility class to make badges more rounded with a larger 
 {{< /badge.inline >}}</div></div>
 {{< /example >}}
 
-
-
-
 {{< example >}}
 {{< badge.inline >}}
 
-
-<alert class="alert alert-warning small w-100 mx-auto text-center"><code>.dark </code>classes do not need to be applied when a color mode is set. You only need to apply these inside Tovuti 2.0 if you plan to use them on dark palettes.</alert>
+<div class="alert alert-warning small w-100 mx-auto text-center"></div><code>.dark </code>classes do not need to be applied when a color mode is set. You only need to apply these inside Tovuti 2.0 if you plan to use them on dark palettes.</div>
 
 {{- range (index $.Site.Data "theme-colors") }}
 <span class="badge-{{ .name }}-light-gradient rounded-pill">{{ .name | title }}</span>{{- end -}}
@@ -144,7 +138,6 @@ Use the `.rounded-pill` utility class to make badges more rounded with a larger 
 
 <div class="bg-brand-light rounded-4 text-light p-4 mt-4 d-flex justify-content-center flex-wrap" data-bs-theme="dark">
 <p class="my-4 w-100 text-center"><code>.dark</code> class applied</p>
-<hr class="text-light w-100" />
 <div class="w-100 d-flex flex-wrap gap-3 justify-content-center gap-2">
 {{< badge.inline >}}
 {{- range (index $.Site.Data "theme-colors") }}
@@ -160,7 +153,7 @@ Use the `.rounded-pill` utility class to make badges more rounded with a larger 
 
 <div class="bg-brand-light rounded-4 text-light p-4 mt-4 d-flex justify-content-center flex-wrap" data-bs-theme="dark">
 <p class="my-4 w-100 text-center"><code>.badge-lg</code> + <code>.dark</code> class applied</p>
-<hr class="text-light w-100" />
+
 <div class="w-75 d-flex flex-wrap gap-3 justify-content-center gap-2">
 {{< badge.inline >}}
 {{- range (index $.Site.Data "theme-colors") }}
@@ -168,14 +161,10 @@ Use the `.rounded-pill` utility class to make badges more rounded with a larger 
 {{< /badge.inline >}}</div></div>
 {{< /example >}}
 
-
-
-
 {{< example >}}
 {{< badge.inline >}}
 
-
-<alert class="alert alert-warning small w-100 mx-auto text-center"><code>.dark </code>classes do not need to be applied when a color mode is set. You only need to apply these inside Tovuti 2.0 if you plan to use them on dark palettes.</alert>
+<div class="alert alert-warning small w-100 mx-auto text-center"><code>.dark </code>classes do not need to be applied when a color mode is set. You only need to apply these inside Tovuti 2.0 if you plan to use them on dark palettes.</div>
 
 {{- range (index $.Site.Data "theme-colors") }}
 <span class="badge-outline-gradient-{{ .name }} rounded-pill">{{ .name | title }}</span>{{- end -}}
@@ -183,28 +172,29 @@ Use the `.rounded-pill` utility class to make badges more rounded with a larger 
 
 <div class="bg-brand-light rounded-4 text-light p-4 mt-4 d-flex justify-content-center flex-wrap" data-bs-theme="dark">
 <p class="my-4 w-100 text-center"><code>.dark</code> class applied</p>
-<hr class="text-light w-100" />
 <div class="w-100 d-flex flex-wrap gap-3 justify-content-center gap-2">
 {{< badge.inline >}}
 {{- range (index $.Site.Data "theme-colors") }}
 <span class="badge-outline-gradient-{{ .name }} dark rounded-pill">{{ .name | title }}</span>{{- end -}}
-{{< /badge.inline >}}</div></div>
+{{< /badge.inline >}}
+</div></div>
 
 <p class="my-4 w-100 text-center"><code>.badge-lg</code> class applied</p>
 <div class="w-75 d-flex flex-wrap gap-3 justify-content-center gap-2">
 {{< badge.inline >}}
 {{- range (index $.Site.Data "theme-colors") }}
 <span class="badge-outline-gradient-{{ .name }} badge-lg rounded-pill">{{ .name | title }}</span>{{- end -}}
-{{< /badge.inline >}}</div>
+{{< /badge.inline >}}
+</div>
 
 <div class="bg-brand-light rounded-4 text-light p-4 mt-4 d-flex justify-content-center flex-wrap" data-bs-theme="dark">
 <p class="my-4 w-100 text-center"><code>.badge-lg</code> + <code>.dark</code> class applied</p>
-<hr class="text-light w-100" />
 <div class="w-75 d-flex flex-wrap gap-3 justify-content-center gap-2">
 {{< badge.inline >}}
 {{- range (index $.Site.Data "theme-colors") }}
 <span class="badge-outline-gradient-{{ .name }} dark badge-lg rounded-pill">{{ .name | title }}</span>{{- end -}}
-{{< /badge.inline >}}</div></div>
+{{< /badge.inline >}}
+</div></div>
 {{< /example >}}
 
 ## CSS

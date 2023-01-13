@@ -177,10 +177,10 @@
 @include color-mode(dark) {
   @each $color, $value in $theme-colors {
     .badge-outline-#{$color} {
-        color: tint-color($value, 80%);
-      }
+      color: tint-color($value, 80%);
     }
   }
+}
 
 // Outline badge
 
@@ -237,7 +237,6 @@
     }
   }
 }
-
 
 @include color-mode(dark) {
   @each $color, $value in $theme-colors {
