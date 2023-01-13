@@ -17,3 +17,11 @@
   contrast_color: dark
 - name: dark
   hex: "#343a40"
+- name: brand
+  hex: "#1e2935"
+- name: brand-light
+  hex: "#374151"
+- name: brand-white
+  hex: "#ffffff"
+- name: cta
+  hex: "#007287"

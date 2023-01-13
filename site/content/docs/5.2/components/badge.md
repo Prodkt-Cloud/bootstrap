@@ -85,8 +85,9 @@ Set a `background-color` with contrasting foreground `color` with [our `.text-bg
 
 {{< example >}}
 {{< badge.inline >}}
+<div class="d-flex flex-wrap gap-3 justify-content-center">
 {{- range (index $.Site.Data "theme-colors") }}
-<div class="badge d-inline-flex align-items-center gap-1 overflow-hidden border border-blue-100 py-0 ps-1 text-{{ .name }}"><i class="fa-sharp fa-solid fa-rocket-launch"></i>{{ .name | title }}<span class="text-body fw-normal me-n2 p-1 border-start border-blue-100">1,234</span></div>{{- end -}}
+<div class="badge d-inline-flex align-items-center gap-1 overflow-hidden border border-blue-100 py-0 ps-1 text-{{ .name }}"><i class="fa-sharp fa-solid fa-rocket-launch"></i>{{ .name | title }}<span class="text-body fw-normal me-n2 p-1 border-start border-blue-100">1,234</span></div>{{- end -}}</div>
 {{< /badge.inline >}}
 {{< /example >}}
 
@@ -101,6 +102,63 @@ Use the `.rounded-pill` utility class to make badges more rounded with a larger 
 {{- range (index $.Site.Data "theme-colors") }}
 <span class="badge rounded-pill text-bg-{{ .name }}">{{ .name | title }}</span>{{- end -}}
 {{< /badge.inline >}}
+{{< /example >}}
+
+## Custom Beta badges
+
+Use the `.rounded-pill` utility class to make badges more rounded with a larger `border-radius`. Make sure to inspect this code as these have semantic class names and aren't fully built using utility classes.
+
+{{< example >}}
+{{< badge.inline >}}
+{{- range (index $.Site.Data "theme-colors") }}
+<span class="badge-outline-{{ .name }} rounded-pill">{{ .name | title }}</span>{{- end -}}
+{{< /badge.inline >}}
+{{< /example >}}
+
+{{< example >}}
+{{< badge.inline >}}
+{{- range (index $.Site.Data "theme-colors") }}
+<span class="badge-outline-gradient-{{ .name }} rounded-pill">{{ .name | title }}</span>{{- end -}}
+{{< /badge.inline >}}
+{{< /example >}}
+
+
+{{< example >}}
+{{< badge.inline >}}
+{{- range (index $.Site.Data "theme-colors") }}
+<span class="badge-{{ .name }}-light rounded-pill">{{ .name | title }}</span>{{- end -}}
+{{< /badge.inline >}}
+{{< /example >}}
+
+
+{{< example >}}
+{{< badge.inline >}}
+{{- range (index $.Site.Data "theme-colors") }}
+<span class="badge-{{ .name }}-light-gradient rounded-pill">{{ .name | title }}</span>{{- end -}}
+{{< /badge.inline >}}
+{{< /example >}}
+
+
+{{< example >}}
+{{< badge.inline >}}
+<div class="bg-dark rounded p-5">
+
+
+{{- range (index $.Site.Data "theme-colors") }}
+<span class="badge-outline-{{ .name }} dark rounded-pill">{{ .name | title }}</span>{{- end -}}
+<hr class="text-light">
+{{- range (index $.Site.Data "theme-colors") }}
+<span class="badge-outline-gradient-{{ .name }} dark rounded-pill">{{ .name | title }}</span>{{- end -}}
+<hr class="text-light">
+
+{{- range (index $.Site.Data "theme-colors") }}
+<span class="badge-{{ .name }}-light dark rounded-pill">{{ .name | title }}</span>{{- end -}}
+
+<hr class="text-light">
+{{- range (index $.Site.Data "theme-colors") }}
+<span class="badge-{{ .name }}-light-gradient dark rounded-pill">{{ .name | title }}</span>{{- end -}}
+{{< /badge.inline >}}
+</div>
 {{< /example >}}
 
 ## CSS

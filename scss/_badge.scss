@@ -3,6 +3,11 @@
 // Requires one of the contextual, color modifier classes for `color` and
 // `background-color`.
 
+//
+// _badges.scss
+//
+
+
 .badge {
   // scss-docs-start badge-css-vars
   --#{$prefix}badge-padding-x: #{$badge-padding-x};
@@ -25,11 +30,231 @@
   vertical-align: baseline;
   @include border-radius(var(--#{$prefix}badge-border-radius));
   @include gradient-bg();
+  vertical-align: middle;
 
-  // Empty badges collapse automatically
-  &:empty {
-    display: none;
+  &.badge-lg {
+      padding: $badge-padding-y * 2 $badge-padding-x * 2.5;
+      font-size: $badge-font-size + 0.1em;
   }
+}
+
+// Lighten Badge
+
+@each $color,
+$value in $theme-colors {
+    .badge-#{$color}-light {
+        @include badge-variant-light($value);
+        // scss-docs-start badge-css-vars
+        --#{$prefix}badge-padding-x: #{$badge-padding-x};
+        --#{$prefix}badge-padding-y: #{$badge-padding-y};
+        @include rfs($badge-font-size, --#{$prefix}badge-font-size);
+        --#{$prefix}badge-font-weight: #{$badge-font-weight};
+        --#{$prefix}badge-font-family: #{$badge-font-family};
+        --#{$prefix}badge-color: #{$badge-color};
+        --#{$prefix}badge-border-radius: #{$badge-border-radius};
+        display: inline-block;
+        padding: var(--#{$prefix}badge-padding-y) var(--#{$prefix}badge-padding-x);
+        @include font-size(var(--#{$prefix}badge-font-size));
+        font-weight: var(--#{$prefix}badge-font-weight);
+        line-height: 1;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
+
+        &.dark {
+
+
+          &:not(#{$light}) {
+            color: tint-color($value, 75%);
+            }
+          color: tint-color($value, 0%);
+        }
+
+        &[href] {
+            text-decoration: none;
+            background-color: rgba($value, 0.18);
+        }
+
+        &[href] {
+
+            &:hover,
+            &:focus {
+                text-decoration: none;
+                background-color: rgba($value, 0.4);
+            }
+        }
+
+        &.badge-lg {
+          padding: $badge-padding-y * 2 $badge-padding-x * 2.5;
+          font-size: $badge-font-size + 0.1em;
+      }
+    }
+}
+// Light Gradient Badge
+
+@each $color,
+$value in $theme-colors {
+    .badge-#{$color}-light-gradient {
+        @include badge-variant-light($value);
+        // scss-docs-start badge-css-vars
+        --#{$prefix}badge-padding-x: #{$badge-padding-x};
+        --#{$prefix}badge-padding-y: #{$badge-padding-y};
+        @include rfs($badge-font-size, --#{$prefix}badge-font-size);
+        --#{$prefix}badge-font-weight: #{$badge-font-weight};
+        --#{$prefix}badge-font-family: #{$badge-font-family};
+        --#{$prefix}badge-color: #{$badge-color};
+        --#{$prefix}badge-border-radius: #{$badge-border-radius};
+        display: inline-block;
+        padding: var(--#{$prefix}badge-padding-y) var(--#{$prefix}badge-padding-x);
+        @include font-size(var(--#{$prefix}badge-font-size));
+        font-weight: var(--#{$prefix}badge-font-weight);
+        line-height: 1;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
+        background-image: linear-gradient(145deg, tint-color($value, 85%), tint-color($value, 95%));
+
+
+        &:not(#{$light}) {
+        color: var(--#{$prefix}badge-color);
+        }
+
+      &.dark {
+
+
+        &:not(#{$light}) {
+          color: tint-color($value, 85%);
+          }
+        color: tint-color($value, 0%);
+        background-image: linear-gradient(145deg, shade-color($value, 0%), shade-color($value, 15%));
+      }
+
+        &[href] {
+            text-decoration: none;
+            background-color: rgba($value, 0.18);
+        }
+
+        &[href] {
+
+            &:hover,
+            &:focus {
+                text-decoration: none;
+                background-color: rgba($value, 0.4);
+            }
+        }
+
+        &.badge-lg {
+          padding: $badge-padding-y * 2 $badge-padding-x * 2.5;
+          font-size: $badge-font-size + 0.1em;
+      }
+    }
+}
+
+// Outline badge
+
+@each $color,
+$value in $theme-colors {
+    .badge-outline-#{$color} {
+        @include badge-variant-outline($value);
+        --#{$prefix}badge-padding-x: #{$badge-padding-x};
+        --#{$prefix}badge-padding-y: #{$badge-padding-y};
+        @include rfs($badge-font-size, --#{$prefix}badge-font-size);
+        --#{$prefix}badge-font-weight: #{$badge-font-weight};
+        --#{$prefix}badge-font-family: #{$badge-font-family};
+        --#{$prefix}badge-color: #{$badge-color};
+        --#{$prefix}badge-border-radius: #{$badge-border-radius};
+        display: inline-block;
+        padding: var(--#{$prefix}badge-padding-y) var(--#{$prefix}badge-padding-x);
+        @include font-size(var(--#{$prefix}badge-font-size));
+        font-weight: var(--#{$prefix}badge-font-weight);
+        line-height: 1;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
+        @include border-radius(var(--#{$prefix}badge-border-radius));
+
+        // color: tint-color($value, 80%);
+        // color: var(--#{$prefix}badge-color);
+
+        &.dark {
+
+        color: tint-color($value, 80%);
+        }
+
+        &[href] {
+            text-decoration: none;
+            background-color: rgba($value, 0.2);
+        }
+
+        &[href] {
+
+            &:hover,
+            &:focus {
+                text-decoration: none;
+                background-color: rgba($value, 0.2);
+            }
+        }
+
+        &.badge-lg {
+          padding: $badge-padding-y * 2 $badge-padding-x * 2.5;
+          font-size: $badge-font-size + 0.1em;
+      }
+    }
+}
+
+// Outline badge
+
+@each $color,
+$value in $theme-colors {
+    .badge-outline-gradient-#{$color} {
+        @include badge-variant-outline($value);
+        --#{$prefix}badge-padding-x: #{$badge-padding-x};
+        --#{$prefix}badge-padding-y: #{$badge-padding-y};
+        @include rfs($badge-font-size, --#{$prefix}badge-font-size);
+        --#{$prefix}badge-font-weight: #{$badge-font-weight};
+        --#{$prefix}badge-font-family: #{$badge-font-family};
+        --#{$prefix}badge-color: #{$badge-color};
+        --#{$prefix}badge-border-radius: #{$badge-border-radius};
+        --#{$prefix}badge-steps: #{$badge-border-radius};
+        display: inline-block;
+        padding: var(--#{$prefix}badge-padding-y) var(--#{$prefix}badge-padding-x);
+        @include font-size(var(--#{$prefix}badge-font-size));
+        font-weight: var(--#{$prefix}badge-font-weight);
+        line-height: 1;
+        border:0;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
+        @include border-radius(var(--#{$prefix}badge-border-radius));
+        @include border-gradient($value, $white, 0px);
+        color: transparent;
+        -webkit-background-clip: text;
+        background-clip: text;
+        background-image: linear-gradient(to right, shade-color($value, 30%), tint-color($value, 20%));
+
+        &.dark {
+        background-image: linear-gradient(to right, tint-color($value, 75%), tint-color($value, 25%));
+        }
+
+        &[href] {
+            text-decoration: none;
+            // background-color: rgba($value, 0.2);
+        }
+
+        &[href] {
+
+            &:hover,
+            &:focus {
+                text-decoration: none;
+                // background-color: rgba($value, 0.2);
+            }
+        }
+
+        &.badge-lg {
+          padding: $badge-padding-y * 2 $badge-padding-x * 2.5;
+          font-size: $badge-font-size + 0.1em;
+      }
+    }
 }
 
 // Quick fix for badges in buttons
