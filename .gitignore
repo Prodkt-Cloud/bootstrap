@@ -40,3 +40,7 @@ Thumbs.db
 # Folders to ignore
 /js/coverage/
 /node_modules/
+.vercel/
+.github/
+_site/
+
